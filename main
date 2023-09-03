@@ -1,0 +1,86 @@
+#!/bin/bash
+
+######################################################################
+##             DigitalOcean Droplet - Basic Set Up Script           ##
+#######################################################################
+# To loginto a droplet from WSL ==> ssh root@147.182.204.60
+#  example alias do3='ssh -i myssh1 root@ipv4'" >> .bashrc
+# This script installs the following:-
+#   git
+#   ???
+#   python3 & pip
+#   standard aliases
+#   wget
+#   tmux with a custom config file --> forked from samoshkin/tmux-config --> towry/tmux-config used
+#   nmap
+#   standard build essentials
+#   nano text editor from binaries with custom
+#   ruby
+#   dnsutils
+#   whois
+#   dpkg - Debian package management system
+
+## to install:-
+#   need to first install curl ==> apt install curl
+#   then
+#   curl -k -s https://raw.githubusercontent.com/leighton-0/Standard-set-ups/main/DigitalOcean_Base | bash
+
+s=2                  # Slows scritpt down so you can see whats going on
+
+printf '\n============================================================\n'
+printf '[+] Updating System\n'
+printf '============================================================\n\n'
+apt update -y
+apt upgrade -y
+sleep $s
+
+dpkg --configure -a
+
+apt install wget -y
+apt install ruby -y
+apt install git -y
+apt install tmux -y
+git clone https://github.com/towry/tmux-config.git
+./tmux-config/install.sh
+apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
+sleep 5
+apt install nmap -y
+apt install whois -y
+apt install dnsutils -y
+
+printf '\n============================================================\n'
+printf '[+]  Upload standard .bash_aliases & upgrades to .bashrc. \n'
+printf '============================================================\n\n'
+sleep $s
+
+if [ ! -f ~/.bashrc.bak ]; then                                                      # Check if bashrc.bak has already been copied. If yes then skip
+    cp /root/.bashrc /root/.bashrc.bak                                               # bak Up bashrc incase I fuck it up
+
+wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_aliases       # Upload my standard aliases file
+
+cat <<"EOF" >>.bashrc                                                                #Add pointer to new .bash_aliases
+if [ -f ~/.bash_aliases ]; then
+. ~/.bash_aliases
+fi
+EOF
+fi
+
+. .bashrc && . .bash_aliases                                                         #source .bashrc & .bash_aliases
+
+printf '\n============================================================\n'
+printf '[+]  Install nano text editor from binaries. \n'
+printf '============================================================\n\n'
+sleep $s
+
+wget https://www.nano-editor.org/dist/v7/nano-7.2.tar.gz
+tar -zxvf nano-7.2.tar.gz
+cd nano-7.2
+sudo apt install libncurses-dev
+./configure
+make
+make install
+#     python 3 installed by default on debian
+# apt-get install python3.11.2
+
+
+
