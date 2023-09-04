@@ -84,12 +84,21 @@ make install
 #     WORK IN PROGRESS
 #     python3 seems ot be installed by default on debian but not pip3 it seems!!
 # apt-get install python3.11.2
-apt install python3-pip
+
 #     get error ==> error: externally-managed-environment
-rm ./usr/lib/python3.11/EXTERNALLY-MANAGED
+#     rm ./usr/lib/python3.11/EXTERNALLY-MANAGED
 #     this dosn't seem to work. Had to:-
-#     cd /usr/lib/python3.11
-#     rm EXTERNALLY-MANAGED
+
+cd /usr/lib/python3.11
+rm EXTERNALLY-MANAGED
+cd ~
+apt install python3-pip
+cd CDNRECON
+echo "shodan=API-KEY-HERE" > conf
+echo "securitytrails=API-KEY-HERE" >> conf
+cd ~
+
+
 
 
 
