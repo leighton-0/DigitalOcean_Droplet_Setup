@@ -16,8 +16,8 @@
 #   standard build essentials
 #   nano text editor from binaries with custom
 #   ruby
-#   dnsutils
-#   whois
+#   dnsutils                     # dig & nslookup
+#   whois                        # github reference site https://github.com/rfc1036/whois
 #   dpkg - Debian package management system
 
 ## to install:-
@@ -80,8 +80,9 @@ sudo apt install libncurses-dev
 ./configure
 make
 make install
-#     python 3 installed by default on debian
+#     python3 seems ot be installed by default on debian but not pip3 it seems!!
 # apt-get install python3.11.2
+apt install python3-pip
 
 
 
