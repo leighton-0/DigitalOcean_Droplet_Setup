@@ -96,7 +96,7 @@ apt install python3-pip
 cd CDNRECON
 pip install https://github.com/PaulSec/API-dnsdumpster.com/archive/master.zip --user
 pip3 install -r requirements.txt
-pip install shodan
+pip install -U --user shodan
 pip install pysecuritytrails
 echo "shodan=API-KEY-HERE" > conf
 echo "securitytrails=API-KEY-HERE" >> conf
