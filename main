@@ -81,14 +81,10 @@ sudo apt install libncurses-dev
 make
 make install
 
-#     WORK IN PROGRESS
 #     python3 seems ot be installed by default on debian but not pip3 it seems!!
 # apt-get install python3.11.2
 
-#     get error ==> error: externally-managed-environment
-#     rm ./usr/lib/python3.11/EXTERNALLY-MANAGED
-#     this dosn't seem to work. Had to:-
-
+#     get error ==> "error: externally-managed-environment" when try & install pip. rectify with:-
 cd /usr/lib/python3.11
 rm EXTERNALLY-MANAGED
 cd ~
@@ -97,12 +93,26 @@ cd CDNRECON
 pip install https://github.com/PaulSec/API-dnsdumpster.com/archive/master.zip --user
 pip3 install -r requirements.txt
 pip install -U --user shodan
+pip install pydig
 pip install pysecuritytrails
-echo "shodan=API-KEY-HERE" > conf
-echo "securitytrails=API-KEY-HERE" >> conf
+echo "shodan=API-KEY-HERE" > conf                # create config file for API key
+echo "securitytrails=API-KEY-HERE" >> conf       # create config file for API key
 cd ~
 
-pip install pydig
+printf '\n============================================================\n'
+printf '[+]  Install spiderfoot \n'
+printf '============================================================\n\n'
+sleep $s
+
+git clone https://github.com/smicallef/spiderfoot.git
+cd spiderfoot
+pip3 install -r requirements.txt
+mv passwd passwd_OLD
+
+# You can now start the SpiderFoot web application on port 3000 by running the following command:
+# python3 sf.py -l your-server-ip:3000. For me works better on chrome
+# 
+
 
 
 
