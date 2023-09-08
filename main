@@ -89,6 +89,13 @@ cd /usr/lib/python3.11
 rm EXTERNALLY-MANAGED
 cd ~
 apt install python3-pip
+
+printf '\n============================================================\n'
+printf '[+]  Install CDNRECON \n'
+printf '============================================================\n\n'
+sleep $s
+
+git clone https://github.com/Juuso1337/CDNRECON
 cd CDNRECON
 pip install https://github.com/PaulSec/API-dnsdumpster.com/archive/master.zip --user
 pip3 install -r requirements.txt
@@ -98,6 +105,8 @@ pip install pysecuritytrails
 echo "shodan=API-KEY-HERE" > conf                # create config file for API key
 echo "securitytrails=API-KEY-HERE" >> conf       # create config file for API key
 cd ~
+# To use:-
+# python3 main.py example.com -c config
 
 printf '\n============================================================\n'
 printf '[+]  Install spiderfoot \n'
@@ -108,6 +117,8 @@ git clone https://github.com/smicallef/spiderfoot.git
 cd spiderfoot
 pip3 install -r requirements.txt
 mv passwd passwd_OLD
+echo "admin:password" > passwd
+# access the SpiderFoot web application using the URL http://your-server-ip:3000.
 
 # You can now start the SpiderFoot web application on port 3000 by running the following command:
 # python3 sf.py -l your-server-ip:3000. For me works better on chrome
