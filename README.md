@@ -5,4 +5,12 @@ CONRECON from  juusosilvo/CDNRECON
 usage 
 python3 main.py example.com
 
+# Installation
+
+# Usage
+
+
+# Issues
+
+
 
