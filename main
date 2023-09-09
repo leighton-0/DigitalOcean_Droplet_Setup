@@ -124,6 +124,35 @@ echo "admin:password" > passwd
 # python3 sf.py -l your-server-ip:3000. For me works better on chrome
 # 
 
+printf '\n============================================================\n'
+printf '[+]  Install docker \n'
+print '[+] link --> https://docs.docker.com/engine/install/debian/#install-using-the-repository \n'
+printf '============================================================\n\n'
+sleep $s
+
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+# install docker package
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Verify that the installation is successful by running the hello-world image:
+docker run hello-world
+
+
+
+
 
 
 
