@@ -6,15 +6,18 @@ usage
 python3 main.py example.com
 
 ## Installation
-first install curl ==> apt install curl -y
+first install ```curl ==> apt install curl -y````
 then:-
-curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main | bash
+```curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main | bash```
 The following packages will be installed
 
 
 ## Usage
+### TMUX
 Tmux installed from forked from samoshkin/tmux-config --> towry/tmux-config used
-Tmux ==> see cheat shet
+Tmux ==> see cheat sheet
+###CDNRECON
+#### SPIDERFOOT
 
 
 ## Issues
