@@ -1,3 +1,5 @@
+# under dev - be patient
+
 ## DigitalOcean_Droplet_Setup
 This repository creates a basic set up for a debian digital ocean droplet.  
 I use these droplets mainly for ISINT, recon & basic pen testing.
