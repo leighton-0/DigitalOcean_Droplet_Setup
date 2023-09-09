@@ -151,6 +151,20 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 # Verify that the installation is successful by running the hello-world image:
 docker run hello-world
 
+printf '\n============================================================\n'
+printf '[+]  Install golang 1.21.1 \n'
+printf '============================================================\n\n'
+sleep $s
+# ref:- https://www.digitalocean.com/community/tutorials/how-to-install-go-on-debian-10
+curl -O https://dl.google.com/go/go1.21.1.linux-amd64.tar.gz
+tar xvf go1.21.1.linux-amd64.tar.gz
+chown -R root:root ./go
+mv go /usr/local
+echo "export GOPATH=$HOME/work" >> ~/.profile
+echo "export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin" >> ~/.profile
+source ~/.profile
+
+
 
 
 
