@@ -6,8 +6,8 @@ usage
 python3 main.py example.com
 
 ## Installation
-first install ```curl ==> apt install curl -y````
-then:-
+first install ```curl ==> apt install curl -y```
+then:-/n
 ```curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main | bash```
 The following packages will be installed
 
