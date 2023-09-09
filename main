@@ -20,7 +20,7 @@
 #   whois                        # github reference site https://github.com/rfc1036/whois
 #   dpkg - Debian package management system
 
-## to install:-
+# to install:-
 #   need to first install curl ==> apt install curl
 #   then
 #   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main | bash
@@ -48,6 +48,7 @@ sleep 5
 apt install nmap -y
 apt install whois -y
 apt install dnsutils -y
+apt install tree
 
 printf '\n============================================================\n'
 printf '[+]  Upload standard .bash_aliases & upgrades to .bashrc. \n'
