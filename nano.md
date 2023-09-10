@@ -1,3 +1,6 @@
+Ref:-  https://www.nano-editor.org/dist/latest/cheatsheet.html
+
+
 File handling
 Ctrl+S   	Save current file
 Ctrl+O	Offer to write file ("Save as")
