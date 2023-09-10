@@ -36,61 +36,10 @@ Alt+B	Run a syntax check
 Alt+F	Run a formatter/fixer/arranger
 Alt+:	Start/stop recording of macro
 Alt+;	Replay macro
- | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
 
+### second column
 
-
-
-
-Overview of nano's shortcuts      
-The editor's keystrokes and their functions         
-
-File handling
-Ctrl+S   	Save current file
-Ctrl+O	Offer to write file ("Save as")
-Ctrl+R	Insert a file into current one
-Ctrl+X	Close buffer, exit from nano
-
-Editing
-Ctrl+K   	Cut current line into cutbuffer
-Alt+6	Copy current line into cutbuffer
-Ctrl+U	Paste contents of cutbuffer
-Alt+T	Cut until end of buffer
-Ctrl+]	Complete current word
-Alt+3	Comment/uncomment line/region
-Alt+U	Undo last action
-Alt+E	Redo last undone action
-
-Search and replace
-Ctrl+Q   	Start backward search
-Ctrl+W	Start forward search
-Alt+Q	Find next occurrence backward
-Alt+W	Find next occurrence forward
-Alt+R	Start a replacing session
-
-Deletion
-Ctrl+H	Delete character before cursor      
-Ctrl+D	Delete character under cursor
-Alt+Bsp	Delete word to the left
-Ctrl+Del   	Delete word to the right
-Alt+Del	Delete current line
-
-Operations
-Ctrl+T   	Execute some command
-Ctrl+J	Justify paragraph or region
-Alt+J	Justify entire buffer
-Alt+B	Run a syntax check
-Alt+F	Run a formatter/fixer/arranger
-Alt+:	Start/stop recording of macro
-Alt+;	Replay macro
-
-	Moving around
+Moving around
 Ctrl+B   	One character backward
 Ctrl+F	One character forward
 Ctrl+←	One word backward
@@ -128,3 +77,4 @@ Alt+N	Turn line numbers on/off
 Alt+P	Turn visible whitespace on/off
 Alt+X	Hide or unhide the help lines
 Ctrl+L	Refresh the screen
+
