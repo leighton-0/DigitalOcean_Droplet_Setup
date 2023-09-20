@@ -179,7 +179,18 @@ curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 # run the installation using Bash:
 bash /tmp/install.sh
 
+printf '\n============================================================\n'
+printf '[+]  Install sherlock \n'
+printf '============================================================\n\n'
 
+# clone the repo
+$ git clone https://github.com/sherlock-project/sherlock.git
+
+# change the working directory to sherlock
+$ cd sherlock
+
+# install the requirements
+$ python3 -m pip install -r requirements.txt
 
 
 
