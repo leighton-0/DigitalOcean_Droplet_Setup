@@ -49,6 +49,7 @@ apt install nmap -y
 apt install whois -y
 apt install dnsutils -y
 apt install tree
+apt install figlet toilet            # install figlet for banners
 
 printf '\n============================================================\n'
 printf '[+]  Upload standard .bash_aliases & upgrades to .bashrc. \n'
