@@ -8,7 +8,7 @@
 # This script installs the following:-
 #   git
 #   ???
-#   python3 & pip
+#   python3 & piphttps://github.com/leighton-0/DigitalOcean_Droplet_Setup/edit/main/main
 #   standard aliases
 #   wget
 #   tmux with a custom config file --> forked from samoshkin/tmux-config --> towry/tmux-config used
@@ -192,5 +192,16 @@ $ cd sherlock
 # install the requirements
 $ python3 -m pip install -r requirements.txt
 
+
+printf '\n============================================================\n'
+printf '[+]  Install veracrypt \n'
+printf '============================================================\n\n'
+
+# Ref:- https://kifarunix.com/install-veracrypt-on-debian-11/?expand_article=1
+wget https://launchpad.net/veracrypt/trunk/1.25.9/+download/veracrypt-1.25.9-setup.tar.bz2
+# Extract the installer once the download is completed
+tar xjf veracrypt-1.25.9-setup.tar.bz2
+# using GUI based installer
+sudo ./veracrypt-1.25.9-setup-gui-x64
 
 
