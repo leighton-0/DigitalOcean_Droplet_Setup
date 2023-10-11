@@ -193,7 +193,7 @@ $ cd sherlock
 # install the requirements
 $ python3 -m pip install -r requirements.txt
 
-
+<< 'MULTILINE-COMMENT'
 printf '\n============================================================\n'
 printf '[+]  Install veracrypt \n'
 printf '============================================================\n\n'
@@ -204,5 +204,6 @@ wget https://launchpad.net/veracrypt/trunk/1.25.9/+download/veracrypt-1.25.9-set
 tar xjf veracrypt-1.25.9-setup.tar.bz2
 # using GUI based installer
 sudo ./veracrypt-1.25.9-setup-gui-x64
+MULTILINE-COMMENT
 
 
