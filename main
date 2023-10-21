@@ -36,7 +36,7 @@ apt update -y
 apt upgrade -y
 sleep $s
 
-dpkg --configure -a
+dpkg --configure -a -y
 
 apt install wget -y
 apt install ruby -y
