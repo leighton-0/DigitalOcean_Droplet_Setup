@@ -3,7 +3,8 @@
 ######################################################################
 ##             DigitalOcean Droplet - Basic Set Up Script           ##
 #######################################################################
-# To loginto a droplet from WSL ==> ssh root@147.182.204.60
+# To loginto a droplet from WSL ==> ssh root@<IP>
+# to create a alias to the droplet:-
 #  example alias do3='ssh -i myssh1 root@ipv4'" >> .bashrc
 # This script installs the following:-
 #   git
@@ -92,6 +93,7 @@ rm EXTERNALLY-MANAGED
 cd ~
 apt install python3-pip
 
+<< 'MULTILINE-COMMENT'
 printf '\n============================================================\n'
 printf '[+]  Install CDNRECON \n'
 printf '============================================================\n\n'
@@ -125,6 +127,21 @@ echo "admin:password" > passwd
 # You can now start the SpiderFoot web application on port 3000 by running the following command:
 # python3 sf.py -l your-server-ip:3000. For me works better on chrome
 # 
+
+printf '\n============================================================\n'
+printf '[+]  Install sherlock \n'
+printf '============================================================\n\n'
+
+# clone the repo
+$ git clone https://github.com/sherlock-project/sherlock.git
+
+# change the working directory to sherlock
+$ cd sherlock
+
+# install the requirements
+$ python3 -m pip install -r requirements.txt
+
+MULTILINE-COMMENT
 
 printf '\n============================================================\n'
 printf '[+]  Install docker \n'
@@ -180,18 +197,7 @@ curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 # run the installation using Bash:
 bash /tmp/install.sh
 
-printf '\n============================================================\n'
-printf '[+]  Install sherlock \n'
-printf '============================================================\n\n'
 
-# clone the repo
-$ git clone https://github.com/sherlock-project/sherlock.git
-
-# change the working directory to sherlock
-$ cd sherlock
-
-# install the requirements
-$ python3 -m pip install -r requirements.txt
 
 << 'MULTILINE-COMMENT'
 printf '\n============================================================\n'
