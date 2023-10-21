@@ -197,7 +197,7 @@ curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 # run the installation using Bash:
 bash /tmp/install.sh
 
-
+source ~/.bashrc && source ~/.bash_aliases
 
 << 'MULTILINE-COMMENT'
 printf '\n============================================================\n'
