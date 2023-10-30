@@ -83,6 +83,8 @@ sudo apt install libncurses-dev
 ./configure
 make
 make install
+# set up colour text ref:- https://askubuntu.com/questions/90013/how-do-i-enable-syntax-highlighting-in-nano
+find /usr/share/nano/ -iname "*.nanorc" -exec echo include {} \; >> ~/.nanorc
 
 #     python3 seems ot be installed by default on debian but not pip3 it seems!!
 # apt-get install python3.11.2
