@@ -52,6 +52,11 @@ apt install dnsutils -y
 apt install tree
 apt install figlet toilet            # install figlet for banners
 
+wget https://raw.githubusercontent.com/FreedomBen/digall/main/digall && chmod +x digall
+# installs an automated script for dig
+# Ref:- https://github.com/FreedomBen/digall
+# Use :- ./digall example.com
+
 printf '\n============================================================\n'
 printf '[+]  Upload standard .bash_aliases & upgrades to .bashrc. \n'
 printf '============================================================\n\n'
