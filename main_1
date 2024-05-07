@@ -146,6 +146,10 @@ printf '============================================================\n\n'
 
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 
+echo export PATH=$PATH:$HOME/go/bin >> $home/.bashrc
+source $home/.bashrc
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+
 printf '\n============================================================\n'
 printf '[+]  Upgrade DigitalOcean Metrics Agent \n'
 printf '============================================================\n\n'
