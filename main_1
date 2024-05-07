@@ -1,0 +1,160 @@
+#!/bin/bash
+
+######################################################################
+##             DigitalOcean Droplet - Basic Set Up Script           ##
+#######################################################################
+# To loginto a droplet from WSL ==> ssh root@<IP>
+# to create a alias to the droplet:-
+#  example alias do3='ssh -i myssh1 root@ipv4'" >> .bashrc
+# This script installs the following:-
+#   git
+#   ???
+#   python3 & piphttps://github.com/leighton-0/DigitalOcean_Droplet_Setup/edit/main/main
+#   standard aliases
+#   wget
+#   tmux with a custom config file --> forked from samoshkin/tmux-config --> towry/tmux-config used
+#   nmap
+#   standard build essentials
+#   nano text editor from binaries with custom
+#   ruby
+#   dnsutils                     # dig & nslookup
+#   whois                        # github reference site https://github.com/rfc1036/whois
+#   dpkg - Debian package management system
+
+# to install:-
+#   need to first install curl ==> apt install curl
+#   then
+#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main | bash
+
+
+s=2                  # Slows scritpt down so you can see whats going on
+
+printf '\n============================================================\n'
+printf '[+] Updating System\n'
+printf '============================================================\n\n'
+apt update -y
+apt upgrade -y
+sleep $s
+
+dpkg --configure -a -y
+
+apt install wget -y
+apt install ruby -y
+apt install git -y
+apt install tmux -y
+git clone https://github.com/towry/tmux-config.git
+./tmux-config/install.sh
+apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
+sleep 5
+apt install nmap -y
+apt install whois -y
+apt install dnsutils -y
+apt install tree
+apt install figlet toilet            # install figlet for banners
+
+wget https://raw.githubusercontent.com/FreedomBen/digall/main/digall && chmod +x digall
+# installs an automated script for dig
+# Ref:- https://github.com/FreedomBen/digall
+# Use :- ./digall example.com
+
+printf '\n============================================================\n'
+printf '[+]  Upload standard .bash_aliases & upgrades to .bashrc. \n'
+printf '============================================================\n\n'
+sleep $s
+
+if [ ! -f ~/.bashrc.bak ]; then                                                      # Check if bashrc.bak has already been copied. If yes then skip
+    cp /root/.bashrc /root/.bashrc.bak                                               # bak Up bashrc incase I fuck it up
+
+wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_aliases       # Upload my standard aliases file
+
+cat <<"EOF" >>.bashrc                                                                #Add pointer to new .bash_aliases
+if [ -f ~/.bash_aliases ]; then
+. ~/.bash_aliases
+fi
+EOF
+fi
+
+. .bashrc && . .bash_aliases                                                         #source .bashrc & .bash_aliases
+
+printf '\n============================================================\n'
+printf '[+]  Install nano text editor from binaries. \n'
+printf '============================================================\n\n'
+sleep $s
+
+wget https://www.nano-editor.org/dist/v7/nano-7.2.tar.gz
+tar -zxvf nano-7.2.tar.gz
+cd nano-7.2
+sudo apt install libncurses-dev
+./configure
+make
+make install
+# set up colour text ref:- https://askubuntu.com/questions/90013/how-do-i-enable-syntax-highlighting-in-nano
+find /usr/share/nano/ -iname "*.nanorc" -exec echo include {} \; >> ~/.nanorc
+
+#     python3 seems ot be installed by default on debian but not pip3 it seems!!
+# apt-get install python3.11.2
+
+#     get error ==> "error: externally-managed-environment" when try & install pip. rectify with:-
+cd /usr/lib/python3.11
+rm EXTERNALLY-MANAGED
+cd ~
+apt install python3-pip
+
+printf '\n============================================================\n'
+printf '[+]  Install docker \n'
+print '[+] link --> https://docs.docker.com/engine/install/debian/#install-using-the-repository \n'
+printf '============================================================\n\n'
+sleep $s
+
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+# install docker package
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Verify that the installation is successful by running the hello-world image:
+docker run hello-world
+
+printf '\n============================================================\n'
+printf '[+]  Install golang 1.21.1 \n'
+printf '============================================================\n\n'
+sleep $s
+# ref:- https://www.digitalocean.com/community/tutorials/how-to-install-go-on-debian-10
+curl -O https://dl.google.com/go/go1.21.1.linux-amd64.tar.gz
+tar xvf go1.21.1.linux-amd64.tar.gz
+chown -R root:root ./go
+mv go /usr/local
+echo "export GOPATH=$HOME/work" >> ~/.profile
+echo "export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin" >> ~/.profile
+source ~/.profile
+
+printf '\n============================================================\n'
+printf '[+]  Upgrade DigitalOcean Metrics Agent \n'
+printf '============================================================\n\n'
+
+# Ref https://docs.digitalocean.com/products/monitoring/how-to/upgrade-legacy-agent/
+
+# Uninstall the legacy metrics agent.
+apt purge do-agent
+
+# Install the current metrics agent
+curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
+
+# run the installation using Bash:
+bash /tmp/install.sh
+
+source ~/.bashrc && source ~/.bash_aliases
+
+
+
