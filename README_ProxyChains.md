@@ -1,6 +1,6 @@
 ```apt install proxychains```
 
-# Configuring Proxychains
+### Configuring Proxychains
 The Proxychains configuration file is located at /etc/proxychains.conf. Edit this file to specify your desired proxy setup:
 
 ```nano /etc/proxychains.conf```
@@ -11,19 +11,21 @@ The Proxychains configuration file is located at /etc/proxychains.conf. Edit thi
   
   Add some SOCKS proxies to the list. For example:
   
-    ```socks5 127.0.0.1 1080
+    ```
+    socks5 127.0.0.1 1080
     socks4 1.2.3.4 1080  
-    socks5 4.3.2.1 8080```
+    socks5 4.3.2.1 8080
+    ```
     
 Save the file after adding proxies.
 
-# Testing Proxychains
+### Testing Proxychains
 Before pairing with Nmap, test that proxychains is working correctly:
 proxychains firefox
 Browse to a site like https://www.iplocation.net/ to check your origin IP address.
 The IP should match one of your proxy servers rather than your local system‘s real IP.
 
-#Using Nmap with Proxychains
+### Using Nmap with Proxychains
 ```proxychains nmap [target] [options]```
 However, there are some limitations to be aware of:
     ICMP/UDP scans do not work. Stick to TCP connect scans.
