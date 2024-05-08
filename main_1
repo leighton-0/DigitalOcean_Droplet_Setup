@@ -38,7 +38,7 @@ apt update -y
 apt upgrade -y
 sleep $s
 
-dpkg --configure -a -y
+# dpkg --configure -a -y
 
 apt install wget -y
 apt install ruby -y
@@ -121,7 +121,7 @@ echo \
 apt-get update
 
 # install docker package
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Verify that the installation is successful by running the hello-world image:
 docker run hello-world
