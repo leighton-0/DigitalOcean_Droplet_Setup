@@ -1,4 +1,5 @@
 ```apt install proxychains```
+
 **Configuring Proxychains**
 The Proxychains configuration file is located at /etc/proxychains.conf. Edit this file to specify your desired proxy setup:
 ```nano /etc/proxychains.conf```
