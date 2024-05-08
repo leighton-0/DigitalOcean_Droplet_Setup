@@ -11,26 +11,26 @@ The Proxychains configuration file is located at /etc/proxychains.conf. Edit thi
   
   Add some SOCKS proxies to the list. For example:
   
-    ```
+  ```
     socks5 127.0.0.1 1080
     socks4 1.2.3.4 1080  
     socks5 4.3.2.1 8080
-    ```
+  ```
     
 Save the file after adding proxies.
 
 ### Testing Proxychains
 Before pairing with Nmap, test that proxychains is working correctly:
-proxychains firefox
+>proxychains firefox
 Browse to a site like https://www.iplocation.net/ to check your origin IP address.
 The IP should match one of your proxy servers rather than your local system‘s real IP.
 
 ### Using Nmap with Proxychains
 ```proxychains nmap [target] [options]```
 However, there are some limitations to be aware of:
-    ICMP/UDP scans do not work. Stick to TCP connect scans.
-    DNS resolution may not work properly. Specify targets by IP rather than name.
-    Banner grabbing and OS detection do not work with proxychains.
+    >ICMP/UDP scans do not work. Stick to TCP connect scans.
+    >DNS resolution may not work properly. Specify targets by IP rather than name.
+    >Banner grabbing and OS detection do not work with proxychains.
 
 With those limitations in mind, let‘s walk through some examples.
 
