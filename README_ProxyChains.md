@@ -9,6 +9,7 @@ The Proxychains configuration file is located at /etc/proxychains.conf. Edit thi
   Uncomment the dynamic_chain line:
   comment out the strict_chain line:
   Add some SOCKS proxies to the list. For example:
+  
     socks5 127.0.0.1 1080
     socks4 1.2.3.4 1080  
     socks5 4.3.2.1 8080
