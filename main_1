@@ -154,6 +154,18 @@ source $home/.bashrc
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 
 printf '\n============================================================\n'
+printf '[+]  Install WPScan \n'
+printf '============================================================\n\n'
+
+apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
+sleep 5
+gem install wpscan                                  #install wpscan
+
+# install proxychains
+apt install proxychains
+
+
+printf '\n============================================================\n'
 printf '[+]  Upgrade DigitalOcean Metrics Agent \n'
 printf '============================================================\n\n'
 
