@@ -22,8 +22,8 @@ Save the file after adding proxies.
 ### Testing Proxychains
 Before pairing with Nmap, test that proxychains is working correctly:
 >proxychains firefox
-Browse to a site like https://www.iplocation.net/ to check your origin IP address.
-The IP should match one of your proxy servers rather than your local system‘s real IP.
+>Browse to a site like https://www.iplocation.net/ to check your origin IP address.
+>The IP should match one of your proxy servers rather than your local system‘s real IP.
 
 ### Using Nmap with Proxychains
 ```proxychains nmap [target] [options]```
