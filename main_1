@@ -6,13 +6,10 @@
 # To loginto a droplet from WSL ==> ssh root@<IP>
 # to create a alias to the droplet:-
 #  example alias do3='ssh -i myssh1 root@ipv4'" >> .bashrc
-# first install curl ==> apt install curl -y
-# then:-
-
 
 # to install:-
 #   need to first install curl ==> apt install curl
-#   then
+#   then:-
 #   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash
 echo "START OF SCRIPT"
 s=3                  # Slows scritpt down so you can see whats going on
@@ -38,8 +35,6 @@ apt install dnsutils -y              # dig & nslookup
 apt install tree
 apt install figlet toilet            # install figlet for banners
 
-<<SHELL_MULTI_LINE_COMMENTS
-
 printf '\n============================================================\n'
 printf '[+] Install tmux ref & custom config \n'
 printf '============================================================\n\n'
@@ -47,6 +42,8 @@ sleep $s
 apt install tmux -y
 git clone https://github.com/towry/tmux-config.git
 ./tmux-config/install.sh
+
+<<SHELL_MULTI_LINE_COMMENTS
 
 printf '\n============================================================\n'
 printf '[+] install digall\n'
