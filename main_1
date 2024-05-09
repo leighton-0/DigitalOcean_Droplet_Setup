@@ -51,8 +51,6 @@ wget https://raw.githubusercontent.com/FreedomBen/digall/main/digall && chmod +x
 # Ref:- https://github.com/FreedomBen/digall
 # Use :- ./digall example.com
 
-<<SHELL_MULTI_LINE_COMMENTS
-
 printf '\n============================================================\n'
 printf '[+]  Upload standard .bash_aliases & upgrades to .bashrc. \n'
 printf '============================================================\n\n'
@@ -71,6 +69,8 @@ EOF
 fi
 
 . .bashrc && . .bash_aliases                                                     #source .bashrc & .bash_aliases
+
+<<SHELL_MULTI_LINE_COMMENTS
 
 printf '\n============================================================\n'
 printf '[+]  Install nano text editor from binaries. \n'
