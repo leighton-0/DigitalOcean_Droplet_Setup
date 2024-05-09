@@ -148,7 +148,7 @@ printf '============================================================\n\n'
 sleep $s
 apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
 gem install wpscan                                  #install wpscan
-
+<<SHELL_MULTI_LINE_COMMENTS
 printf '\n============================================================\n'
 printf '[+]  Install Proxychains ref'- https://github.com/SagaOfAGuy/proxychains-config/tree/main \n'
 printf '============================================================\n\n'
@@ -157,7 +157,7 @@ wget https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/mai
 chmod +x proxychains_config.sh
 ./proxychains_config.sh
 
-<<SHELL_MULTI_LINE_COMMENTS
+
 printf '\n============================================================\n'
 printf '[+]  Upgrade DigitalOcean Metrics Agent \n'
 printf '============================================================\n\n'
