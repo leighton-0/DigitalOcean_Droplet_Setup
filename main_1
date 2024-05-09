@@ -50,7 +50,7 @@ apt install tmux -y
 git clone https://github.com/towry/tmux-config.git
 ./tmux-config/install.sh
 apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
-sleep 5
+sleep $s
 apt install nmap -y
 apt install whois -y
 apt install dnsutils -y
@@ -72,12 +72,11 @@ if [ ! -f ~/.bashrc.bak ]; then                                                 
 
 wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_aliases       # Upload my standard aliases file
 
-cat <<"EOF" >>.bashrc                                                                #Add pointer to new .bash_aliases
+cat <<EOF >.bashrc                                                                #Add pointer to new .bash_aliases
 if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
 fi
 EOF
-fi
 
 . .bashrc && . .bash_aliases                                                         #source .bashrc & .bash_aliases
 
@@ -181,6 +180,8 @@ apt purge do-agent
 curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 # run the installation using Bash:
 bash /tmp/install.sh
+
+apt autoremove
 
 source ~/.bashrc && source ~/.bash_aliases
 
