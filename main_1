@@ -37,10 +37,14 @@ apt install tree
 apt install figlet toilet            # install figlet for banners
 
 printf '\n============================================================\n'
-printf '[+] Install tmux ref & custom config \n'
+printf '[+] Install tmux ref & custom config https://github.com/hamvocke/dotfiles/tree/master/tmux\n'
 printf '============================================================\n\n'
 sleep $s
 apt install tmux -y
+wget https://raw.githubusercontent.com/hamvocke/dotfiles/master/tmux/.tmux.conf
+wget https://raw.githubusercontent.com/hamvocke/dotfiles/master/tmux/tmux_colors.sh
+chmod +x tmux_colors.sh
+./tmux_colors.sh
 
 
 
