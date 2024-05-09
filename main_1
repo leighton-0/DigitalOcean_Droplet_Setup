@@ -63,13 +63,14 @@ if [ ! -f ~/.bashrc.bak ]; then                                                 
 
 wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_aliases       # Upload my standard aliases file
 
-cat <<EOF >.bashrc                                                                #Add pointer to new .bash_aliases
+cat <<"EOF" >>.bashrc                                                                #Add pointer to new .bash_aliases
 if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
 fi
 EOF
+fi
 
-. .bashrc && . .bash_aliases                                                         #source .bashrc & .bash_aliases
+. .bashrc && . .bash_aliases                                                     #source .bashrc & .bash_aliases
 
 printf '\n============================================================\n'
 printf '[+]  Install nano text editor from binaries. \n'
