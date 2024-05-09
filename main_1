@@ -79,7 +79,7 @@ fi
 EOF
 
 . .bashrc && . .bash_aliases                                                         #source .bashrc & .bash_aliases
-comment
+
 printf '\n============================================================\n'
 printf '[+]  Install nano text editor from binaries. \n'
 printf '============================================================\n\n'
@@ -159,7 +159,7 @@ sleep $s
 apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
 sleep 5
 gem install wpscan                                  #install wpscan
-
+comment
 printf '\n============================================================\n'
 printf '[+]  Install Proxychains ref'- https://github.com/SagaOfAGuy/proxychains-config/tree/main \n'
 printf '============================================================\n\n'
