@@ -160,8 +160,12 @@ apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-de
 sleep 5
 gem install wpscan                                  #install wpscan
 
-# install proxychains
-apt install proxychains
+printf '\n============================================================\n'
+printf '[+]  Install Proxychains ref'- https://github.com/SagaOfAGuy/proxychains-config/tree/main \n'
+printf '============================================================\n\n'
+wget https://github.com/leighton-0/DigitalOcean_Droplet_Setup/blob/main/proxychains_config.sh
+chmod +x proxychains_config.sh
+./proxychains_config.sh
 
 printf '\n============================================================\n'
 printf '[+]  Upgrade DigitalOcean Metrics Agent \n'
