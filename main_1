@@ -8,23 +8,7 @@
 #  example alias do3='ssh -i myssh1 root@ipv4'" >> .bashrc
 # first install curl ==> apt install curl -y
 # then:-
-dpkg --configure -a -y
-# then:-
-# curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash
-# This script installs the following:-
-#   git
-#   ???
-#   python3 & piphttps://github.com/leighton-0/DigitalOcean_Droplet_Setup/edit/main/main
-#   standard aliases
-#   wget
-#   tmux with a custom config file --> towry/tmux-config used
-#   nmap
-#   standard build essentials
-#   nano text editor from binaries with custom
-#   ruby
-#   dnsutils                     # dig & nslookup
-#   whois                        # github reference site https://github.com/rfc1036/whois
-#   dpkg - Debian package management system
+
 
 # to install:-
 #   need to first install curl ==> apt install curl
@@ -37,27 +21,37 @@ printf '\n============================================================\n'
 printf '[+] Updating System\n'
 printf '============================================================\n\n'
 sleep $s
-apt update && apt upgrade -y
+apt update && apt upgrade -y && apt autoremove -y
+dpkg --configure -a -y        # Debian package management system
+
+printf '\n============================================================\n'
+printf '[+] Install Misc\n'
+printf '============================================================\n\n'
 sleep $s
-
-# dpkg --configure -a -y
-
 apt install wget -y
 apt install ruby -y
 apt install git -y
-apt install tmux -y
-git clone https://github.com/towry/tmux-config.git
-./tmux-config/install.sh
 apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
-sleep $s
 apt install nmap -y
 apt install whois -y
-apt install dnsutils -y
+apt install dnsutils -y              # dig & nslookup
 apt install tree
 apt install figlet toilet            # install figlet for banners
 
 <<SHELL_MULTI_LINE_COMMENTS
 
+printf '\n============================================================\n'
+printf '[+] Install tmux ref & custom config \n'
+printf '============================================================\n\n'
+sleep $s
+apt install tmux -y
+git clone https://github.com/towry/tmux-config.git
+./tmux-config/install.sh
+
+printf '\n============================================================\n'
+printf '[+] install digall\n'
+printf '============================================================\n\n'
+sleep $s
 wget https://raw.githubusercontent.com/FreedomBen/digall/main/digall && chmod +x digall
 # installs an automated script for dig
 # Ref:- https://github.com/FreedomBen/digall
