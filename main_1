@@ -30,8 +30,10 @@
 #   need to first install curl ==> apt install curl
 #   then
 #   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash
-
+echo "START OF SCRIPT"
 s=3                  # Slows scritpt down so you can see whats going on
+<<SHELL_MULTI_LINE_COMMENTS
+
 
 printf '\n============================================================\n'
 printf '[+] Updating System\n'
@@ -40,7 +42,7 @@ sleep $s
 apt update -y
 apt upgrade -y
 sleep $s
-<<SHELL_MULTI_LINE_COMMENTS
+
 # if [ 1 -eq 0 ]; then        # BLOCK COMMNENT
 # dpkg --configure -a -y
 
