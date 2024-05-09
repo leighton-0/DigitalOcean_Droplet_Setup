@@ -40,7 +40,7 @@ sleep $s
 apt update -y
 apt upgrade -y
 sleep $s
-: <<'END'
+<<'END_COMMENT'
 # dpkg --configure -a -y
 
 apt install wget -y
@@ -159,7 +159,7 @@ sleep $s
 apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
 sleep 5
 gem install wpscan                                  #install wpscan
-END
+END_COMMENT
 printf '\n============================================================\n'
 printf '[+]  Install Proxychains ref'- https://github.com/SagaOfAGuy/proxychains-config/tree/main \n'
 printf '============================================================\n\n'
