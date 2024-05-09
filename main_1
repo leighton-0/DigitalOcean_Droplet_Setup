@@ -58,6 +58,8 @@ apt install dnsutils -y
 apt install tree
 apt install figlet toilet            # install figlet for banners
 
+<<SHELL_MULTI_LINE_COMMENTS
+
 wget https://raw.githubusercontent.com/FreedomBen/digall/main/digall && chmod +x digall
 # installs an automated script for dig
 # Ref:- https://github.com/FreedomBen/digall
