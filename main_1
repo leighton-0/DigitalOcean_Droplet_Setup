@@ -128,7 +128,7 @@ apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docke
 
 # Verify that the installation is successful by running the hello-world image:
 docker run hello-world
-sleep 9
+sleep $s
 printf '\n============================================================\n'
 printf '[+]  Install golang 1.21.1 \n'
 printf '============================================================\n\n'
