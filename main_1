@@ -165,7 +165,7 @@ printf '\n============================================================\n'
 printf '[+]  Install Proxychains ref'- https://github.com/SagaOfAGuy/proxychains-config/tree/main \n'
 printf '============================================================\n\n'
 sleep $s
-wget https://github.com/leighton-0/DigitalOcean_Droplet_Setup/main/proxychains_config.sh
+wget https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/proxychains_config.sh
 chmod +x proxychains_config.sh
 ./proxychains_config.sh
 sleep $s
