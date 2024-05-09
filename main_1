@@ -31,7 +31,7 @@
 #   then
 #   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash
 
-s=2                  # Slows scritpt down so you can see whats going on
+s=3                  # Slows scritpt down so you can see whats going on
 
 printf '\n============================================================\n'
 printf '[+] Updating System\n'
@@ -145,7 +145,7 @@ source ~/.profile
 printf '\n============================================================\n'
 printf '[+]  Install projectdiscovery subfinder \n'
 printf '============================================================\n\n'
-
+sleep $s
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 
 echo export PATH=$PATH:$HOME/go/bin >> $home/.bashrc
@@ -155,7 +155,7 @@ go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 printf '\n============================================================\n'
 printf '[+]  Install WPScan \n'
 printf '============================================================\n\n'
-
+sleep $s
 apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
 sleep 5
 gem install wpscan                                  #install wpscan
@@ -163,13 +163,16 @@ gem install wpscan                                  #install wpscan
 printf '\n============================================================\n'
 printf '[+]  Install Proxychains ref'- https://github.com/SagaOfAGuy/proxychains-config/tree/main \n'
 printf '============================================================\n\n'
-wget https://github.com/leighton-0/DigitalOcean_Droplet_Setup/blob/main/proxychains_config.sh
+sleep $s
+git clone https://github.com/leighton-0/DigitalOcean_Droplet_Setup/blob/main/proxychains_config.sh
 chmod +x proxychains_config.sh
 ./proxychains_config.sh
+sleep $s
 
 printf '\n============================================================\n'
 printf '[+]  Upgrade DigitalOcean Metrics Agent \n'
 printf '============================================================\n\n'
+sleep $s
 # Ref https://docs.digitalocean.com/products/monitoring/how-to/upgrade-legacy-agent/
 # Uninstall the legacy metrics agent.
 apt purge do-agent
