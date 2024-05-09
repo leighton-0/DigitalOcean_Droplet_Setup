@@ -40,7 +40,7 @@ sleep $s
 apt update -y
 apt upgrade -y
 sleep $s
-
+: <<'END'
 # dpkg --configure -a -y
 
 apt install wget -y
@@ -61,7 +61,7 @@ wget https://raw.githubusercontent.com/FreedomBen/digall/main/digall && chmod +x
 # installs an automated script for dig
 # Ref:- https://github.com/FreedomBen/digall
 # Use :- ./digall example.com
-: <<'END'
+
 printf '\n============================================================\n'
 printf '[+]  Upload standard .bash_aliases & upgrades to .bashrc. \n'
 printf '============================================================\n\n'
