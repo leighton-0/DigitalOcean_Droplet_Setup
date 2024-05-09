@@ -183,7 +183,8 @@ curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 # run the installation using Bash:
 bash /tmp/install.sh
 
-(sleep 2; echo y) | apt autoremove
+apt autoremove
+printf '%s\n' y n ''
 
 # source ~/.bashrc && source ~/.bash_aliases
 
