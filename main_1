@@ -68,8 +68,6 @@ EOF
 fi
 . .bashrc && . .bash_aliases                                                     #source .bashrc & .bash_aliases
 
-<<SHELL_MULTI_LINE_COMMENTS
-
 printf '\n============================================================\n'
 printf '[+]  Install nano text editor from binaries. \n'
 printf '============================================================\n\n'
@@ -84,9 +82,12 @@ make install
 # set up colour text ref:- https://askubuntu.com/questions/90013/how-do-i-enable-syntax-highlighting-in-nano
 find /usr/share/nano/ -iname "*.nanorc" -exec echo include {} \; >> ~/.nanorc
 
+printf '\n============================================================\n'
+printf '[+]  Install python & PIP. \n'
+printf '============================================================\n\n'
+sleep $s
 #     python3 seems ot be installed by default on debian but not pip3 it seems!!
 # apt-get install python3.11.2
-
 #     get error ==> "error: externally-managed-environment" when try & install pip. rectify with:-
 cd /usr/lib/python3.11
 rm EXTERNALLY-MANAGED
@@ -104,19 +105,20 @@ apt-get install ca-certificates curl gnupg
 install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 chmod a+r /etc/apt/keyrings/docker.gpg
-
 # Add the repository to Apt sources:
 echo \
   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt-get update
-
 # install docker package
 apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-# Verify that the installation is successful by running the hello-world image:
+printf '\n\n'
+printf 'Verify that the installation is successful by running the hello-world image:'
 docker run hello-world
+printf '\n\n'
+sleep 5
+<<SHELL_MULTI_LINE_COMMENTS
 sleep $s
 printf '\n============================================================\n'
 printf '[+]  Install golang 1.21.1 \n'
