@@ -55,8 +55,6 @@ printf '\n============================================================\n'
 printf '[+]  Upload standard .bash_aliases & upgrades to .bashrc. \n'
 printf '============================================================\n\n'
 sleep $s
-printf '\nTEST\n'
-sleep $s
 if [ ! -f ~/.bashrc.bak ]; then                                                      # Check if bashrc.bak has already been copied. If yes then skip
     cp /root/.bashrc /root/.bashrc.bak                                               # bak Up bashrc incase I fuck it up
 wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_aliases       # Upload my standard aliases file
@@ -114,12 +112,13 @@ apt-get update
 # install docker package
 apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 printf '\n\n'
+printf '**********\n'
 printf 'Verify that the installation is successful by running the hello-world image:'
 docker run hello-world
+printf '**********\n'
 printf '\n\n'
 sleep 5
-<<SHELL_MULTI_LINE_COMMENTS
-sleep $s
+
 printf '\n============================================================\n'
 printf '[+]  Install golang 1.21.1 \n'
 printf '============================================================\n\n'
@@ -139,7 +138,6 @@ printf '[+]  Install projectdiscovery subfinder \n'
 printf '============================================================\n\n'
 sleep $s
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-
 echo export PATH=$PATH:$HOME/go/bin >> $home/.bashrc
 source $home/.bashrc
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
@@ -149,9 +147,8 @@ printf '[+]  Install WPScan \n'
 printf '============================================================\n\n'
 sleep $s
 apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
-sleep 5
 gem install wpscan                                  #install wpscan
-
+<<SHELL_MULTI_LINE_COMMENTS
 printf '\n============================================================\n'
 printf '[+]  Install Proxychains ref'- https://github.com/SagaOfAGuy/proxychains-config/tree/main \n'
 printf '============================================================\n\n'
