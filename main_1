@@ -8,7 +8,7 @@
 #  example alias do3='ssh -i myssh1 root@ipv4'" >> .bashrc
 # first install curl ==> apt install curl -y
 # then:-
-# dpkg --configure -a -y  --> experimental!!
+dpkg --configure -a -y
 # then:-
 # curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash
 # This script installs the following:-
@@ -32,8 +32,6 @@
 #   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash
 echo "START OF SCRIPT"
 s=3                  # Slows scritpt down so you can see whats going on
-<<SHELL_MULTI_LINE_COMMENTS
-
 
 printf '\n============================================================\n'
 printf '[+] Updating System\n'
