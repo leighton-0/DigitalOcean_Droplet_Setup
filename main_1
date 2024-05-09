@@ -159,7 +159,7 @@ sleep $s
 apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
 sleep 5
 gem install wpscan                                  #install wpscan
-fi            # END BLOCK COMMENT
+
 printf '\n============================================================\n'
 printf '[+]  Install Proxychains ref'- https://github.com/SagaOfAGuy/proxychains-config/tree/main \n'
 printf '============================================================\n\n'
@@ -180,10 +180,10 @@ apt purge do-agent
 curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 # run the installation using Bash:
 bash /tmp/install.sh
-
+fi            # END BLOCK COMMENT
 apt autoremove
 
 source ~/.bashrc && source ~/.bash_aliases
-
+echo "THE END"
 
 
