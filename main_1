@@ -43,7 +43,6 @@ apt update -y
 apt upgrade -y
 sleep $s
 
-# if [ 1 -eq 0 ]; then        # BLOCK COMMNENT
 # dpkg --configure -a -y
 
 apt install wget -y
@@ -183,12 +182,11 @@ apt purge do-agent
 curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 # run the installation using Bash:
 bash /tmp/install.sh
-# fi            # END BLOCK COMMENT
 
 apt autoremove
 
 # source ~/.bashrc && source ~/.bash_aliases
 
-echo "THE END"
-
+echo "THE END OF THE SCRIPT"
+sleep 8
 
