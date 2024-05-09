@@ -58,16 +58,13 @@ sleep $s
 
 if [ ! -f ~/.bashrc.bak ]; then                                                      # Check if bashrc.bak has already been copied. If yes then skip
     cp /root/.bashrc /root/.bashrc.bak                                               # bak Up bashrc incase I fuck it up
-
 wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_aliases       # Upload my standard aliases file
-
 cat <<"EOF" >>.bashrc                                                                #Add pointer to new .bash_aliases
 if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
 fi
 EOF
 fi
-
 . .bashrc && . .bash_aliases                                                     #source .bashrc & .bash_aliases
 
 <<SHELL_MULTI_LINE_COMMENTS
