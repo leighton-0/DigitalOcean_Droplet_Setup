@@ -40,6 +40,7 @@ sleep $s
 apt update -y
 apt upgrade -y
 sleep $s
+<<SHELL_MULTI_LINE_COMMENTS
 if [ 1 -eq 0 ]; then        # BLOCK COMMNENT
 # dpkg --configure -a -y
 
@@ -181,6 +182,7 @@ curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 # run the installation using Bash:
 bash /tmp/install.sh
 fi            # END BLOCK COMMENT
+SHELL_MULTI_LINE_COMMENTS
 apt autoremove
 
 source ~/.bashrc && source ~/.bash_aliases
