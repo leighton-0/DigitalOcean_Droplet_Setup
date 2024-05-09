@@ -177,7 +177,7 @@ sleep $s
 # Ref https://docs.digitalocean.com/products/monitoring/how-to/upgrade-legacy-agent/
 # Uninstall the legacy metrics agent.
 apt purge do-agent
-printf 'y\r'
+printf 'Y\r'
 # Install the current metrics agent
 curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 # run the installation using Bash:
