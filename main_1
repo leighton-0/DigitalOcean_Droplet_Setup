@@ -169,7 +169,7 @@ wget https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/mai
 chmod +x proxychains_config.sh
 ./proxychains_config.sh
 sleep $s
-SHELL_MULTI_LINE_COMMENTS
+
 printf '\n============================================================\n'
 printf '[+]  Upgrade DigitalOcean Metrics Agent \n'
 printf '============================================================\n\n'
@@ -183,7 +183,9 @@ curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 # run the installation using Bash:
 y | bash /tmp/install.sh
 
-# apt autoremove -y
+SHELL_MULTI_LINE_COMMENTS
+
+apt autoremove -y
 
 # source ~/.bashrc && source ~/.bash_aliases
 
