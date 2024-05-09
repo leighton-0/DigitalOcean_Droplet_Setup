@@ -40,7 +40,7 @@ sleep $s
 apt update -y
 apt upgrade -y
 sleep $s
-<<'END_COMMENT'
+: <<'END_COMMENT'
 # dpkg --configure -a -y
 
 apt install wget -y
