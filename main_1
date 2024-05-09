@@ -19,7 +19,6 @@ printf '[+] Updating System\n'
 printf '============================================================\n\n'
 sleep $s
 apt update && apt upgrade -y && apt autoremove -y
-dpkg --configure -a -y        # Debian package management system
 
 printf '\n============================================================\n'
 printf '[+] Install Misc\n'
@@ -43,8 +42,6 @@ apt install tmux -y
 git clone https://github.com/towry/tmux-config.git
 ./tmux-config/install.sh
 
-<<SHELL_MULTI_LINE_COMMENTS
-
 printf '\n============================================================\n'
 printf '[+] install digall\n'
 printf '============================================================\n\n'
@@ -53,6 +50,8 @@ wget https://raw.githubusercontent.com/FreedomBen/digall/main/digall && chmod +x
 # installs an automated script for dig
 # Ref:- https://github.com/FreedomBen/digall
 # Use :- ./digall example.com
+
+<<SHELL_MULTI_LINE_COMMENTS
 
 printf '\n============================================================\n'
 printf '[+]  Upload standard .bash_aliases & upgrades to .bashrc. \n'
