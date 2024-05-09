@@ -39,8 +39,7 @@ printf '\n============================================================\n'
 printf '[+] Updating System\n'
 printf '============================================================\n\n'
 sleep $s
-apt update -y
-apt upgrade -y
+apt update && apt upgrade -y
 sleep $s
 
 # dpkg --configure -a -y
