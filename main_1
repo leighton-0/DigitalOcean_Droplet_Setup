@@ -184,6 +184,7 @@ curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 bash /tmp/install.sh
 
 echo "Y" | apt autoremove
+echo -e -n “\r” 
 
 # source ~/.bashrc && source ~/.bash_aliases
 
