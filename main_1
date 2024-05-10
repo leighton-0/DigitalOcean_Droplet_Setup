@@ -162,6 +162,25 @@ wget https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/mai
 chmod +x proxychains_config.sh
 ./proxychains_config.sh
 
+printf '\n============================================================\n'
+printf '[+]  cp nse scripts & themes & plugin from https://github.com/hackertarget/nmap-nse-scripts \n'
+printf '============================================================\n\n'
+sleep $s
+mkdir nmap-nse-scripts
+cd nmap-nse-scripts/
+wget https://raw.githubusercontent.com/hackertarget/nmap-nse-scripts/master/hostmap-hackertarget.nse
+wget https://raw.githubusercontent.com/hackertarget/nmap-nse-scripts/master/http-wordpress-info.nse
+wget https://raw.githubusercontent.com/hackertarget/nmap-nse-scripts/master/http-wordpress-plugins.nse
+wget https://raw.githubusercontent.com/hackertarget/nmap-nse-scripts/master/http-wordpress-themes.nse
+wget https://raw.githubusercontent.com/hackertarget/nmap-nse-scripts/master/wp-plugins.lst
+wget https://raw.githubusercontent.com/hackertarget/nmap-nse-scripts/master/wp-themes.lst
+cp ~/nmap-nse-scripts/hostmap-hackertarget.nse /usr/share/nmap/scripts
+cp ~/nmap-nse-scripts/http-wordpress-info.nse /usr/share/nmap/scripts
+cp ~/nmap-nse-scripts/http-wordpress-plugins.nse /usr/share/nmap/scripts
+cp ~/nmap-nse-scripts/http-wordpress-themes.nse /usr/share/nmap/scripts
+cp ~/nmap-nse-scripts/wp-plugins.lst /usr/share/nmap/nselib/data/
+cp ~/nmap-nse-scripts/wp-themes.lst /usr/share/nmap/nselib/data/
+
 <<SHELL_MULTI_LINE_COMMENTS    # problem with the following - need sorting
 
 printf '\n============================================================\n'
