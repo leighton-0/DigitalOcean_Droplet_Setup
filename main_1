@@ -70,6 +70,16 @@ if [ -f ~/.bash_aliases ]; then
 fi
 EOF
 fi
+wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash.functions
+cat <<"EOF" >>.bash.functino                                                                #Add pointer to new .bash_functions
+if [ -f ~/.bash_aliases ]; then
+. ~/.bash_aliases
+fi
+EOF
+fi
+
+
+
 . .bashrc && . .bash_aliases                                                     #source .bashrc & .bash_aliases
 
 printf '\n============================================================\n'
@@ -146,6 +156,13 @@ sleep $s
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 echo export PATH=$PATH:$HOME/go/bin >> $home/.bashrc
 source $home/.bashrc
+
+printf '\n============================================================\n'
+printf '[+]  Install hakoriginfinder\n'
+printf '============================================================\n\n'
+
+go install github.com/hakluke/hakoriginfinder@latest
+apt install prips -y
 
 printf '\n============================================================\n'
 printf '[+]  Install WPScan \n'
