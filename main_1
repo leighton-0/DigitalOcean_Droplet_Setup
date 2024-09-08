@@ -62,12 +62,17 @@ printf '[+]  Upload standard .bash_aliases & upgrades to .bashrc. \n'
 printf '============================================================\n\n'
 sleep $s
 if [ ! -f ~/.bashrc.bak ]; then                                                      # Check if bashrc.bak has already been copied. If yes then skip
-    cp /root/.bashrc /root/.bashrc.bak                                               # bak Up bashrc incase I fuck it up
-wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_aliases       # Upload my standard aliases file
+    cp /root/.bashrc /root/.bashrc.bak                                             # bak Up bashrc incase I fuck it up
+fi
+
+wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_aliases      # Upload my standard aliases file
+wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_functions
+
 cat <<"EOF" >>.bashrc                                                                #Add pointer to new .bash_aliases
 if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
-fi
+if [ -f ~/.bash_functions ]; then
+. ~/.bash_functions
 EOF
 fi
 wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash.functions
@@ -215,6 +220,14 @@ y | bash /tmp/install.sh
 SHELL_MULTI_LINE_COMMENTS
 
 # source ~/.bashrc && source ~/.bash_aliases
+
+mkdir mycode
+cd mycode
+mkdir repos
+cd repos
+git clone https://github.com/leighton-0/My_Random_Scripts
+cd ..
+ln -s ~/mycode/repos/My_Randon_Scripts/repo_sync.sh repo_sync.sh
 
 echo "THE END OF THE SCRIPT"
 
