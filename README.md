@@ -9,7 +9,7 @@ I use these droplets mainly for ISINT, recon & basic pen testing.
 ## Installation
 first install ```curl ==> apt install curl -y```  
 then:-  
-```curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main | bash```  
+```curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main-1 | bash```  
 The following packages will be installed:-  
 * TMUX   cloned from --> github.com/towry/tmux-config
 * whois
