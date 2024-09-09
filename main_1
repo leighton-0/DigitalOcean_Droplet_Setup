@@ -71,17 +71,12 @@ wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_functions
 cat <<"EOF" >>.bashrc                                                                #Add pointer to new .bash_aliases
 if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
+fi
 if [ -f ~/.bash_functions ]; then
 . ~/.bash_functions
-EOF
-fi
-wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash.functions
-cat <<"EOF" >>.bash.functino                                                                #Add pointer to new .bash_functions
-if [ -f ~/.bash_aliases ]; then
-. ~/.bash_aliases
 fi
 EOF
-fi
+
 
 
 
