@@ -221,7 +221,13 @@ cd mycode
 mkdir repos
 cd repos
 git clone https://github.com/leighton-0/My_Random_Scripts
-cd ..
+git clone https://github.com/leighton-0/.dotfiles
+cd .dotfile
+git re­mote set-url ori­gin git@github.com:leighton-0/.dot­files.git
+# Note  Need ot set up ssh keys for github ********************************
+cd ~
+ln -s ~/mycode/repos/.dotfiles/.bash_functions .bash_functions
+ln -s ~/mycode/repos/.dotfiles/.bash_aliases .bash_aliases
 ln -s ~/mycode/repos/My_Randon_Scripts/repo_sync.sh repo_sync.sh
 
 echo "THE END OF THE SCRIPT"
