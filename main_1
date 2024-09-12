@@ -212,6 +212,10 @@ curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 # run the installation using Bash:
 y | bash /tmp/install.sh
 
+ln -s ~/mycode/repos/.dotfiles/.bash_functions .bash_functions
+ln -s ~/mycode/repos/.dotfiles/.bash_aliases .bash_aliases
+ln -s ~/mycode/repos/My_Randon_Scripts/repo_sync.sh repo_sync.sh
+
 SHELL_MULTI_LINE_COMMENTS
 
 # source ~/.bashrc && source ~/.bash_aliases
@@ -226,10 +230,34 @@ cd .dotfile
 git re­mote set-url ori­gin git@github.com:leighton-0/.dot­files.git
 # Note  Need ot set up ssh keys for github ********************************
 cd ~
-ln -s ~/mycode/repos/.dotfiles/.bash_functions .bash_functions
-ln -s ~/mycode/repos/.dotfiles/.bash_aliases .bash_aliases
-ln -s ~/mycode/repos/My_Randon_Scripts/repo_sync.sh repo_sync.sh
+
+printf '\n============================================================\n'
+printf '[+]  Install linkes to dotfiles using STOW \n'
+printf '============================================================\n\n'
+sleep $s
+# This script will Stow all the dotfiles located in the ~/dotfiles folder.
+# The -R flag is used to force a 'restow' which will remove any existing symlinks before attempting to Stow.
+
+echo "Stowing Dotfiles...";
+
+cd ~/.dotfiles
+for file in ~/dotfiles/*; do
+  # Only run Stow on the directories in the dotfiles folder and not the individual files.
+  # Using 'basename' strips the filepath from the directory name. 
+  if [ -d ${file} ]; then
+    stow -R $(basename $file)
+    echo "$(basename $file) stowed."; 
+  fi
+done
+
+# Return back to the your PWD from before you ran the script
+cd ~- 
+
+echo 'All stowed';
+sleep $s
+
 
 echo "THE END OF THE SCRIPT"
-
+sleep $s
+sleep $s
 
