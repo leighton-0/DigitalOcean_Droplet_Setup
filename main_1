@@ -35,6 +35,8 @@ apt install whois -y
 apt install dnsutils -y              # dig & nslookup
 apt install tree
 apt install figlet toilet            # install figlet for banners
+apt install neofetch -y
+apt install cmatrix -y
 
 printf '\n============================================================\n'
 printf '[+] Install tmux ref & custom config https://github.com/hamvocke/dotfiles/tree/master/tmux\n'
@@ -255,6 +257,12 @@ cd ~-
 
 echo 'All stowed';
 sleep $s
+
+printf '\n============================================================\n'
+printf '[+]  Generate SSH key for github\n'
+printf '============================================================\n\n'
+sleep $s
+ssh-keygen -t rsa -b 4096 -C "leighton@clucas.xxx"
 
 
 echo "THE END OF THE SCRIPT"
