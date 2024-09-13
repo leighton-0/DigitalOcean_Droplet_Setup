@@ -4,15 +4,12 @@
 ##             DigitalOcean Droplet - Basic Set Up Script           ##
 #######################################################################
 # To loginto a droplet from WSL ==> ssh root@<IP>
-# to create a alias to the droplet:-
-#  example alias do3='ssh -i myssh1 root@ipv4'" >> .bashrc
 
 # to install:-
 #   need to first install curl ==> apt install curl
 #   then:-
-#   dpkg --configure -a
-#   then:-
 #   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash
+
 echo "START OF SCRIPT"
 s=3                  # Slows scritpt down so you can see whats going on
 
@@ -43,12 +40,10 @@ printf '[+] Install tmux ref & custom config https://github.com/hamvocke/dotfile
 printf '============================================================\n\n'
 sleep $s
 apt install tmux -y
-wget https://raw.githubusercontent.com/hamvocke/dotfiles/master/tmux/.tmux.conf
-wget https://raw.githubusercontent.com/hamvocke/dotfiles/master/tmux/tmux_colors.sh
-chmod +x tmux_colors.sh
-./tmux_colors.sh
-
-
+# wget https://raw.githubusercontent.com/hamvocke/dotfiles/master/tmux/.tmux.conf -> now install using STOW
+# wget https://raw.githubusercontent.com/hamvocke/dotfiles/master/tmux/tmux_colors.sh
+# chmod +x tmux_colors.sh
+# ./tmux_colors.sh
 
 printf '\n============================================================\n'
 printf '[+] install digall\n'
@@ -59,24 +54,37 @@ wget https://raw.githubusercontent.com/FreedomBen/digall/main/digall && chmod +x
 # Ref:- https://github.com/FreedomBen/digall
 # Use :- ./digall example.com
 
+if [[ 1 -eq 2 ]]; then    # Block comment start
 printf '\n============================================================\n'
 printf '[+]  Upload standard .bash_aliases & upgrades to .bashrc. \n'
 printf '============================================================\n\n'
 sleep $s
-if [ ! -f ~/.bashrc.bak ]; then                                                      # Check if bashrc.bak has already been copied. If yes then skip
-    cp /root/.bashrc /root/.bashrc.bak                                             # bak Up bashrc incase I fuck it up
-fi
-
 wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_aliases      # Upload my standard aliases file
 wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_functions
 
-cat <<"EOF" >>.bashrc                                                                #Add pointer to new .bash_aliases
+fi                        # Block comment end
+
+printf '\n============================================================\n'
+printf '[+]  Make additions to .bashrc. \n'
+printf '============================================================\n\n'
+sleep $s
+
+if [ ! -f ~/.bashrc.bak ]; then                                                      # Check if bashrc.bak has already been copied. If yes then skip
+    cp ~/.bashrc ~/.bashrc.bak                                             # bak Up bashrc incase I fuck it up
+fi
+cat << "EOF" >>.bashrc                                                                #Add pointer to new .bash_aliases
 if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
 fi
 if [ -f ~/.bash_functions ]; then
 . ~/.bash_functions
 fi
+PS1="SHELL:${SHLVL} \W\$ "
+export PS1
+# Color Info
+
+export PATH="$PATH:.bash_aliases"
+
 EOF
 
 
