@@ -10,18 +10,42 @@
 #   then:-
 #   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash
 
-echo "START OF SCRIPT"
+# icons
+# ❌⏳💀🎉 ℹ️ ⚠️ 🚀 ✅ ♻ 🚮 🛡 🔧  ⚙ 
+
+# curl -L --silent https://bit.ly/xxxxx<user> | bash  # not sure what this is doing
+
+set -x
+
+
+# set colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE="\033[01;34m" # Heading
+NO_COLOR='\033[0m'
+CLEAR_LINE='\r\033[K'
+BOLD="\033[01;01m" # Highlight
+RESET="\033[00m" # Normal
+
+echo -e "  🚀 ${BOLD}Starting Droplet setup script${RESET}"
 s=4                  # Slows scritpt down so you can see whats going on
 sleep $s
+compute_start_time() {
+    start_time=$(date +%s)
+    echo "\n\n Install started - $start_time \n" >> script.log
+}
 
+system_update() {
 printf '\n============================================================\n'
-printf '[+] Updating System\n'
+printf '    Updating System\n'
 printf '============================================================\n\n'
 sleep $s
 apt update && apt upgrade -y && apt autoremove -y
-
+}
+install_misc() {
 printf '\n============================================================\n'
-printf '[+] Install Misc\n'
+printf '    Install Misc\n'
 printf '============================================================\n\n'
 sleep $s
 apt install wget -y
@@ -31,13 +55,13 @@ apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-de
 apt install nmap -y
 apt install whois -y
 apt install dnsutils -y              # dig & nslookup
-apt install tree
-apt install figlet toilet            # install figlet for banners
+apt install tree -y
+apt install figlet toilet -y            # install figlet for banners
 apt install neofetch -y
 apt install cmatrix -y
-
+}
 printf '\n============================================================\n'
-printf '[+] Install tmux ref & custom config https://github.com/hamvocke/dotfiles/tree/master/tmux\n'
+printf '   Install tmux ref & custom config https://github.com/hamvocke/dotfiles/tree/master/tmux\n'
 printf '============================================================\n\n'
 sleep $s
 apt install tmux -y
@@ -47,7 +71,7 @@ apt install tmux -y
 # ./tmux_colors.sh
 
 printf '\n============================================================\n'
-printf '[+] install digall\n'
+printf '    install digall\n'
 printf '============================================================\n\n'
 sleep $s
 wget https://raw.githubusercontent.com/FreedomBen/digall/main/digall && chmod +x digall
@@ -57,7 +81,7 @@ wget https://raw.githubusercontent.com/FreedomBen/digall/main/digall && chmod +x
 
 if [[ 1 -eq 2 ]]; then    # Block comment start
 printf '\n============================================================\n'
-printf '[+]  Upload standard .bash_aliases & upgrades to .bashrc. \n'
+printf '     Upload standard .bash_aliases & upgrades to .bashrc. \n'
 printf '============================================================\n\n'
 sleep $s
 wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_aliases      # Upload my standard aliases file
@@ -170,7 +194,7 @@ source $home/.bashrc
 printf '\n============================================================\n'
 printf '[+]  Install hakoriginfinder\n'
 printf '============================================================\n\n'
-
+sleep $s
 go install github.com/hakluke/hakoriginfinder@latest
 apt install prips -y
 
@@ -190,7 +214,7 @@ chmod +x proxychains_config.sh
 ./proxychains_config.sh
 
 printf '\n============================================================\n'
-printf '[+]  cp nse scripts & themes & plugin from https://github.com/hackertarget/nmap-nse-scripts \n'
+printf '  cp nse scripts & themes & plugin from https://github.com/hackertarget/nmap-nse-scripts \n'
 printf '============================================================\n\n'
 sleep $s
 mkdir nmap-nse-scripts
@@ -227,7 +251,6 @@ ln -s ~/mycode/repos/My_Randon_Scripts/repo_sync.sh repo_sync.sh
 
 fi      SHELL_MULTI_LINE_COMMENTS
 
-# source ~/.bashrc && source ~/.bash_aliases
 
 printf '\n============================================================\n'
 printf '[+]  clone github repos to theit respective directories \n'
@@ -236,13 +259,21 @@ sleep $s
 mkdir -p ~/mycode/repos
 cd !$
 git clone https://github.com/leighton-0/My_Random_Scripts
+git clone https://github.com/leighton-0/cheat_sheets
 git clone https://github.com/leighton-0/.dotfiles
 cd ~/mycode/repos/.dotfile
 git re­mote set-url ori­gin git@github.com:leighton-0/.dot­files.git
 cd ~/mycode/repos/My_Random_Scripts
 git re­mote set-url ori­gin git@github.com:leighton-0/My_Random_Scripts
+cd ~/mycode/repos/cheat_sheets
+git re­mote set-url ori­gin git@github.com:leighton-0/cheat_sheets
 # Note  Need ot set up ssh keys for github ********************************
 cd ~
+wget
+echo "enter the password"
+read -s password
+openssl enc -aes-256-cbc -d -in ~/mycode/repos/my_random_scripts .env.enc -out ~/mycode/.env -k $password
+echo " .env file decrypted successfully & placed in ~/mycode dir"
 
 printf '\n============================================================\n'
 printf '[+]  Install linkes to dotfiles using STOW \n'
@@ -252,7 +283,7 @@ sleep $s
 # The -R flag is used to force a 'restow' which will remove any existing symlinks before attempting to Stow.
 
 echo "Stowing Dotfiles...";
-
+sleep $s
 cd ~/.dotfiles
 for file in ~/dotfiles/*; do
   # Only run Stow on the directories in the dotfiles folder and not the individual files.
@@ -261,20 +292,21 @@ for file in ~/dotfiles/*; do
     stow -R $(basename $file)
     echo "$(basename $file) stowed."; 
   fi
-done
+ln -sf ~/mycode/.env ~/.env    # manually synlinc to .env decrypted file
 
 # Return back to the your PWD from before you ran the script
-cd ~- 
+cd ~/
 
-echo 'All stowed';
+echo "All stowed"
 sleep $s
+printf '\n\n'
 
 printf '\n============================================================\n'
-printf '[+]  Generate SSH key for github\n'
+printf '   Generate SSH key for github\n'
 printf '============================================================\n\n'
 sleep $s
 ssh-keygen -t rsa -b 4096 -C "leighton@clucas.xxx"
-
+printf ' ssk key generated - copy to github
 
 echo "THE END OF THE SCRIPT"
 sleep $s
