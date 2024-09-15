@@ -11,7 +11,8 @@
 #   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash
 
 echo "START OF SCRIPT"
-s=3                  # Slows scritpt down so you can see whats going on
+s=4                  # Slows scritpt down so you can see whats going on
+sleep $s
 
 printf '\n============================================================\n'
 printf '[+] Updating System\n'
@@ -72,23 +73,22 @@ sleep $s
 if [ ! -f ~/.bashrc.bak ]; then                                                      # Check if bashrc.bak has already been copied. If yes then skip
     cp ~/.bashrc ~/.bashrc.bak                                             # bak Up bashrc incase I fuck it up
 fi
-cat << "EOF" >>.bashrc                                                                #Add pointer to new .bash_aliases
+cat << "EOF" >>.bashrc                    #Add pointer to new .bash_aliases
+printf '\n\n'
+printf '================Added by me ==================================\n\n'
+printf '\n'
 if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
 fi
 if [ -f ~/.bash_functions ]; then
 . ~/.bash_functions
 fi
+if [ -f ~/.env ]; then
+. ~/.env
+fi
 PS1="SHELL:${SHLVL} \W\$ "
 export PS1
-# Color Info
-
-export PATH="$PATH:.bash_aliases"
-
 EOF
-
-
-
 
 . .bashrc && . .bash_aliases                                                     #source .bashrc & .bash_aliases
 
@@ -208,8 +208,7 @@ cp ~/nmap-nse-scripts/http-wordpress-themes.nse /usr/share/nmap/scripts
 cp ~/nmap-nse-scripts/wp-plugins.lst /usr/share/nmap/nselib/data/
 cp ~/nmap-nse-scripts/wp-themes.lst /usr/share/nmap/nselib/data/
 
-<<SHELL_MULTI_LINE_COMMENTS    # problem with the following - need sorting
-
+if [ 1 == 0 ]; then    # problem with the following - need sorting
 printf '\n============================================================\n'
 printf '[+]  Upgrade DigitalOcean Metrics Agent \n'
 printf '============================================================\n\n'
@@ -226,18 +225,22 @@ ln -s ~/mycode/repos/.dotfiles/.bash_functions .bash_functions
 ln -s ~/mycode/repos/.dotfiles/.bash_aliases .bash_aliases
 ln -s ~/mycode/repos/My_Randon_Scripts/repo_sync.sh repo_sync.sh
 
-SHELL_MULTI_LINE_COMMENTS
+fi      SHELL_MULTI_LINE_COMMENTS
 
 # source ~/.bashrc && source ~/.bash_aliases
 
-mkdir mycode
-cd mycode
-mkdir repos
-cd repos
+printf '\n============================================================\n'
+printf '[+]  clone github repos to theit respective directories \n'
+printf '============================================================\n\n'
+sleep $s
+mkdir -p ~/mycode/repos
+cd !$
 git clone https://github.com/leighton-0/My_Random_Scripts
 git clone https://github.com/leighton-0/.dotfiles
-cd .dotfile
+cd ~/mycode/repos/.dotfile
 git re­mote set-url ori­gin git@github.com:leighton-0/.dot­files.git
+cd ~/mycode/repos/My_Random_Scripts
+git re­mote set-url ori­gin git@github.com:leighton-0/My_Random_Scripts
 # Note  Need ot set up ssh keys for github ********************************
 cd ~
 
