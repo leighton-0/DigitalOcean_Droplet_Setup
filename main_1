@@ -1,4 +1,7 @@
 #!/bin/bash
+# icons
+# ❌⏳💀🎉 ℹ️ ⚠️ 🚀 ✅ ♻ 🚮 🛡 🔧  ⚙ 
+
 
 #######################################################################
 ##             DigitalOcean Droplet - Basic Set Up Script           ##
@@ -10,13 +13,11 @@
 #   then:-
 #   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash
 
-# icons
-# ❌⏳💀🎉 ℹ️ ⚠️ 🚀 ✅ ♻ 🚮 🛡 🔧  ⚙ 
+# curl -L --silent https://bit.ly/xxxxx<user> | bash          # not sure what this is doing
 
-# curl -L --silent https://bit.ly/xxxxx<user> | bash  # not sure what this is doing
-
-set -x
-
+# Used for debugging
+# set -x
+# PS4='$(tput setaf 9)$(printf "%-12s\\t%.3fs\\t@line\\t%-10s" $(date +%T) $(echo $(date "+%s.%3N")-'$(date "+%s.%3N")' | bc ) $LINENO)$(tput sgr 0)'
 
 # set colors
 RED='\033[0;31m'
@@ -28,8 +29,23 @@ CLEAR_LINE='\r\033[K'
 BOLD="\033[01;01m" # Highlight
 RESET="\033[00m" # Normal
 
-echo -e "  🚀 ${BOLD}Starting Droplet setup script${RESET}"
-s=4                  # Slows scritpt down so you can see whats going on
+s=4                          # Slows scritpt down so you can see whats going on
+
+# verify running as root
+if [[ "${EUID}" -ne 0 ]]; then
+  echo -e ' '${RED}'[!]'${RESET}" This script must be ${RED}run as root${RESET}" 1>&2
+  echo -e ' '${RED}'[!]'${RESET}" Quitting..." 1>&2
+  exit 1
+fi
+
+# verify argument
+if [ $# -eq 0 ]
+  then
+    echo "${RED}No arguments supplied${RESET}"1>&2
+else
+  echo -e "  🚀 ${BOLD}Starting Droplet setup script${RESET}"
+fi
+
 sleep $s
 compute_start_time() {
     start_time=$(date +%s)
@@ -38,46 +54,51 @@ compute_start_time() {
 
 system_update() {
 printf '\n============================================================\n'
-printf '    Updating System\n'
+printf '   ⏳ Updating System\n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
-apt update && apt upgrade -y && apt autoremove -y
+apt update && apt upgrade -y && apt autoremove -y -qq >> script.log 2>>script_error.log    # what is -qq doing?
 }
 install_misc() {
 printf '\n============================================================\n'
-printf '    Install Misc\n'
+printf '    ⏳ Install Misc\n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
-apt install wget -y
-apt install ruby -y
-apt install git -y
-apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
-apt install nmap -y
-apt install whois -y
-apt install dnsutils -y              # dig & nslookup
-apt install tree -y
-apt install figlet toilet -y            # install figlet for banners
-apt install neofetch -y
-apt install cmatrix -y
+apt install wget -y >> script.log 2>>script_error.log
+apt install ruby -y >> script.log 2>>script_error.log
+apt install git -y >> script.log 2>>script_error.log
+apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y >> script.log 2>>script_error.log
+apt install nmap -y >> script.log 2>>script_error.log
+apt install whois -y >> script.log 2>>script_error.log
+apt install dnsutils -y >> script.log 2>>script_error.log              # dig & nslookup
+apt install tree -y >> script.log 2>>script_error.log
+apt install figlet toilet -y >> script.log 2>>script_error.log           # install figlet for banners
+apt install neofetch -y >> script.log 2>>script_error.log
+apt install cmatrix -y >> script.log 2>>script_error.log
 }
+
+install_tmux() {
 printf '\n============================================================\n'
-printf '   Install tmux ref & custom config https://github.com/hamvocke/dotfiles/tree/master/tmux\n'
+printf '   ⏳ Install tmux ref & custom config https://github.com/hamvocke/dotfiles/tree/master/tmux\n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
-apt install tmux -y
+apt install tmux -y -q >> script.log 2>>script_error.log
 # wget https://raw.githubusercontent.com/hamvocke/dotfiles/master/tmux/.tmux.conf -> now install using STOW
 # wget https://raw.githubusercontent.com/hamvocke/dotfiles/master/tmux/tmux_colors.sh
 # chmod +x tmux_colors.sh
 # ./tmux_colors.sh
+}
 
+install_digall() {
 printf '\n============================================================\n'
-printf '    install digall\n'
+printf '    ⏳ install digall\n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 wget https://raw.githubusercontent.com/FreedomBen/digall/main/digall && chmod +x digall
 # installs an automated script for dig
 # Ref:- https://github.com/FreedomBen/digall
 # Use :- ./digall example.com
+}
 
 if [[ 1 -eq 2 ]]; then    # Block comment start
 printf '\n============================================================\n'
@@ -86,38 +107,40 @@ printf '============================================================\n\n'
 sleep $s
 wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_aliases      # Upload my standard aliases file
 wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_functions
-
 fi                        # Block comment end
 
 printf '\n============================================================\n'
-printf '[+]  Make additions to .bashrc. \n'
+printf '[+]  ⏳ Make additions to .bashrc. \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 
 if [ ! -f ~/.bashrc.bak ]; then                                                      # Check if bashrc.bak has already been copied. If yes then skip
     cp ~/.bashrc ~/.bashrc.bak                                             # bak Up bashrc incase I fuck it up
 fi
-cat << "EOF" >>.bashrc                    #Add pointer to new .bash_aliases
+cat <<"EOF" >>.bashrc                    #Add pointer to new .bash_aliases
 printf '\n\n'
 printf '================Added by me ==================================\n\n'
 printf '\n'
 if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
 fi
+
 if [ -f ~/.bash_functions ]; then
 . ~/.bash_functions
 fi
+
 if [ -f ~/.env ]; then
 . ~/.env
 fi
+
 PS1="SHELL:${SHLVL} \W\$ "
 export PS1
 EOF
 
-. .bashrc && . .bash_aliases                                                     #source .bashrc & .bash_aliases
+# . .bashrc && . .bash_aliases                                                     #source .bashrc & .bash_aliases
 
 printf '\n============================================================\n'
-printf '[+]  Install nano text editor from binaries. \n'
+printf '[+]  ⏳ Install nano text editor from binaries. \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 wget https://www.nano-editor.org/dist/v7/nano-7.2.tar.gz
@@ -131,7 +154,7 @@ make install
 find /usr/share/nano/ -iname "*.nanorc" -exec echo include {} \; >> ~/.nanorc
 
 printf '\n============================================================\n'
-printf '[+]  Install python & PIP. \n'
+printf '  ⏳ Install python & PIP. \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 #     python3 seems ot be installed by default on debian but not pip3 it seems!!
@@ -140,10 +163,10 @@ sleep $s
 cd /usr/lib/python3.11
 rm EXTERNALLY-MANAGED
 cd ~
-apt install python3-pip
+apt install python3-pip -y -q >> script.log 2>>script_error.log
 
 printf '\n============================================================\n'
-printf '[+]  Install docker \n'
+printf ' ⏳  Install docker \n' | tee -a script.log
 print '[+] link --> https://docs.docker.com/engine/install/debian/#install-using-the-repository \n'
 printf '============================================================\n\n'
 sleep $s
@@ -170,7 +193,7 @@ printf '\n\n'
 sleep 5
 
 printf '\n============================================================\n'
-printf '[+]  Install golang 1.21.1 \n'
+printf ' ⏳  Install golang 1.21.1 \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 apt-get update
@@ -184,7 +207,7 @@ source ~/.profile
 # ref:- https://royzsec.medium.com/install-go-1-21-0-in-ubuntu-22-04-2-in-5-minutes-468a5330c64e
 
 printf '\n============================================================\n'
-printf '[+]  Install projectdiscovery subfinder \n'
+printf ' ⏳  Install projectdiscovery subfinder \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
@@ -192,21 +215,21 @@ echo export PATH=$PATH:$HOME/go/bin >> $home/.bashrc
 source $home/.bashrc
 
 printf '\n============================================================\n'
-printf '[+]  Install hakoriginfinder\n'
+printf ' ⏳  Install hakoriginfinder\n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 go install github.com/hakluke/hakoriginfinder@latest
 apt install prips -y
 
 printf '\n============================================================\n'
-printf '[+]  Install WPScan \n'
+printf ' ⏳  Install WPScan \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
 gem install wpscan                                  #install wpscan
 
 printf '\n============================================================\n'
-printf '[+]  Install Proxychains ref'- https://github.com/SagaOfAGuy/proxychains-config/tree/main \n'
+printf ' ⏳  Install Proxychains ref'- https://github.com/SagaOfAGuy/proxychains-config/tree/main \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 wget https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/proxychains_config.sh
@@ -214,7 +237,7 @@ chmod +x proxychains_config.sh
 ./proxychains_config.sh
 
 printf '\n============================================================\n'
-printf '  cp nse scripts & themes & plugin from https://github.com/hackertarget/nmap-nse-scripts \n'
+printf '  ⏳  cp nse scripts & themes & plugin from https://github.com/hackertarget/nmap-nse-scripts \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 mkdir nmap-nse-scripts
@@ -234,7 +257,7 @@ cp ~/nmap-nse-scripts/wp-themes.lst /usr/share/nmap/nselib/data/
 
 if [ 1 == 0 ]; then    # problem with the following - need sorting
 printf '\n============================================================\n'
-printf '[+]  Upgrade DigitalOcean Metrics Agent \n'
+printf ' ⏳  Upgrade DigitalOcean Metrics Agent \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 # Ref https://docs.digitalocean.com/products/monitoring/how-to/upgrade-legacy-agent/
@@ -253,7 +276,7 @@ fi      SHELL_MULTI_LINE_COMMENTS
 
 
 printf '\n============================================================\n'
-printf '[+]  clone github repos to theit respective directories \n'
+printf ' ⏳  clone github repos to theit respective directories \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 mkdir -p ~/mycode/repos
@@ -276,7 +299,7 @@ openssl enc -aes-256-cbc -d -in ~/mycode/repos/my_random_scripts .env.enc -out ~
 echo " .env file decrypted successfully & placed in ~/mycode dir"
 
 printf '\n============================================================\n'
-printf '[+]  Install linkes to dotfiles using STOW \n'
+printf ' ⏳  Install linkes to dotfiles using STOW \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 # This script will Stow all the dotfiles located in the ~/dotfiles folder.
@@ -302,11 +325,17 @@ sleep $s
 printf '\n\n'
 
 printf '\n============================================================\n'
-printf '   Generate SSH key for github\n'
+printf ' ⏳  Generate SSH key for github\n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 ssh-keygen -t rsa -b 4096 -C "leighton@clucas.xxx"
 printf ' ssk key generated - copy to github
+
+main() {
+    compute_start_time
+    system_update
+    install_misc
+
 
 echo "THE END OF THE SCRIPT"
 sleep $s
