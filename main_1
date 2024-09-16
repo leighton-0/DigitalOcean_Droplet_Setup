@@ -278,7 +278,6 @@ cp ~/nmap-nse-scripts/wp-themes.lst /usr/share/nmap/nselib/data/
 }
 
 install_DO_Metrics_Agent() {
-if [ 1 -eq 0 ]; then    # problem with the following - need sorting
 printf '\n============================================================\n'
 printf ' ⏳  Upgrade DigitalOcean Metrics Agent \n' | tee -a script.log
 printf '============================================================\n\n'
@@ -297,7 +296,6 @@ ln -s ~/mycode/repos/.dotfiles/.bash_functions .bash_functions
 ln -s ~/mycode/repos/.dotfiles/.bash_aliases .bash_aliases
 ln -s ~/mycode/repos/My_Randon_Scripts/repo_sync.sh repo_sync.sh
 }
-fi      SHELL_MULTI_LINE_COMMENTS
 
 clone_repos() {
 printf '\n============================================================\n'
@@ -382,7 +380,7 @@ main() {
  #   install_WPScan
  #  install_proxychains     # need attantion do not use
    install_nse_scripts
- #   install_DO_Metrics_Agent
+ #   install_DO_Metrics_Agent  # could be a problem with this
 #  setup_synlincs          # not used - redundent
     clone_repos
    setup_stow
