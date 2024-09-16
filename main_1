@@ -248,7 +248,7 @@ gem install wpscan                                  #install wpscan
 
 install_proxychains() {
 printf '\n============================================================\n'
-printf ' ⏳  Install Proxychains ref'- https://github.com/SagaOfAGuy/proxychains-config/tree/main \n' | tee -a script.log
+printf ' ⏳  Install Proxychains ref- https://github.com/SagaOfAGuy/proxychains-config/tree/main \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 wget https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/proxychains_config.sh
@@ -261,7 +261,7 @@ printf '\n============================================================\n'
 printf '  ⏳  cp nse scripts & themes & plugin from https://github.com/hackertarget/nmap-nse-scripts \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
-mkdir nmap-nse-scripts
+mkdir ~/nmap-nse-scripts
 cd nmap-nse-scripts/
 wget https://raw.githubusercontent.com/hackertarget/nmap-nse-scripts/master/hostmap-hackertarget.nse
 wget https://raw.githubusercontent.com/hackertarget/nmap-nse-scripts/master/http-wordpress-info.nse
@@ -382,7 +382,6 @@ main() {
  #   install_WPScan
  #  install_proxychains     # need attantion do not use
    install_nse_scripts
-install_nse_scripts
  #   install_DO_Metrics_Agent
 #  setup_synlincs          # not used - redundent
  #   clone_repos
