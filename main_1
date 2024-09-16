@@ -362,6 +362,12 @@ sleep $s
 ssh-keygen -t rsa -b 4096 -C "leighton@clucas.xxx"
 printf ' ssk key generated - copy to github
 }
+
+compute_finish_time(){
+    finish_time=$(date +%s)
+    echo -e "  ⌛ Time (roughly) taken: ${YELLOW}$(( $(( finish_time - start_time )) / 60 )) minutes${RESET}"
+    echo "\n\n Install completed - $finish_time \n" >> script.log
+}
 main() {
     compute_start_time
     system_update
@@ -384,6 +390,7 @@ main() {
  #   clone_repos
   #  setup_stow
   # gen_SSH_key
+ compute_finish_time
 }
 
 main
