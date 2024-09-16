@@ -62,7 +62,7 @@ printf '\n============================================================\n'
 printf '   ⏳ Updating System\n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
-apt update && apt upgrade -y && apt autoremove -y -qq >> script.log 2>>script_error.log    # what is -qq doing?
+apt update && apt upgrade -y && apt autoremove -y >> script.log 2>>script_error.log    # what is -qq doing?
 }
 install_misc() {
 printf '\n============================================================\n'
@@ -365,7 +365,7 @@ printf ' ssk key generated - copy to github
 
 compute_finish_time(){
     finish_time=$(date +%s)
-    echo -e "  ⌛ Time (roughly) taken: ${YELLOW}$(( $(( finish_time - start_time ))  )) minutes${RESET}"
+    echo -e "  ⌛ Time (roughly) taken: ${YELLOW}$(( $(( finish_time - start_time ))  )) seconds${RESET}"
     echo "\n\n Install completed - $finish_time \n" >> script.log
 }
 main() {
