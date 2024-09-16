@@ -8,6 +8,8 @@
 #######################################################################
 # To loginto a droplet from WSL ==> ssh root@<IP>
 
+# ssh-keygen -t rsa -b 4096 -C "leighton@clucas.xxx"
+
 # to install:-
 #   need to first install curl ==> apt install curl
 #   then:-
@@ -341,15 +343,6 @@ sleep $s
 printf '\n\n'
 }
 
-gen_SSH_key() {
-printf '\n============================================================\n'
-printf ' ⏳  Generate SSH key for github\n' | tee -a script.log
-printf '============================================================\n\n'
-sleep $s
-ssh-keygen -t rsa -b 4096 -C "leighton@clucas.xxx"
-printf ' ssk key generated - copy to github
-}
-
 compute_finish_time() {
     finish_time=$(date +%s)
     echo -e "  ⌛ Time (roughly) taken: ${YELLOW}$(( $(( finish_time - start_time ))  )) seconds${RESET}"
@@ -376,7 +369,6 @@ main() {
     clone_repos
    setup_stow
 #  install_digall # need to make sure its put in /mycode
-  gen_SSH_key
  compute_finish_time
 }
 
