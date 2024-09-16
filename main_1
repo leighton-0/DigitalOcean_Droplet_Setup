@@ -379,8 +379,8 @@ main() {
 #   install_misc
 #   install_tmux
     add_to_bashrc
-    install_nano
-#    install_python
+#    install_nano
+    install_python
 #    install_docker
 #   install_golang
 #    install_PD_subfinder
