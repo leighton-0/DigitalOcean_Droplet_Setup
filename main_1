@@ -43,7 +43,7 @@ if [ $# -eq 0 ]
   then
     echo "${RED}No arguments supplied${RESET}"1>&2
 else
-  echo -e "  🚀 ${BOLD}Starting Droplet setup script${RESET}"
+  echo -e "  🚀 ${BOLD}{RED}Starting Droplet setup script${RESET}"
 fi
 
 sleep $s
@@ -145,7 +145,7 @@ EOF
 }
 # . .bashrc && . .bash_aliases                                                     #source .bashrc & .bash_aliases
 
-install_nano(){
+install_nano() {
 printf '\n============================================================\n'
 printf '[+]  ⏳ Install nano text editor from binaries. \n' | tee -a script.log
 printf '============================================================\n\n'
@@ -383,9 +383,9 @@ main() {
     clone_repos
     setup_stow
     gen_SSH_key
+}
 
-
-echo "THE END OF THE SCRIPT"
+echo " ✅ THE END OF THE SCRIPT"
 sleep $s
 sleep $s
 
