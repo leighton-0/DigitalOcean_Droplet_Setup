@@ -296,11 +296,11 @@ printf ' ⏳  clone github repos to theit respective directories \n' | tee -a sc
 printf '============================================================\n\n'
 sleep $s
 mkdir -p ~/mycode/repos
-cd !$
+cd ~/mycode/repos
 git clone https://github.com/leighton-0/My_Random_Scripts
 git clone https://github.com/leighton-0/cheat_sheets
 git clone https://github.com/leighton-0/.dotfiles
-cd ~/mycode/repos/.dotfile
+#cd ~/mycode/repos/.dotfile
 git re­mote set-url ori­gin git@github.com:leighton-0/.dot­files.git
 cd ~/mycode/repos/My_Random_Scripts
 git re­mote set-url ori­gin git@github.com:leighton-0/My_Random_Scripts
@@ -308,7 +308,7 @@ cd ~/mycode/repos/cheat_sheets
 git re­mote set-url ori­gin git@github.com:leighton-0/cheat_sheets
 # Note  Need ot set up ssh keys for github ********************************
 cd ~
-wget
+# wget
 echo "enter the password"
 read -s password
 openssl enc -aes-256-cbc -d -in ~/mycode/repos/my_random_scripts .env.enc -out ~/mycode/.env -k $password
