@@ -386,7 +386,7 @@ main() {
   # gen_SSH_key
 }
 
-test_fun
+main
 
 echo "  ✅ THE END OF THE SCRIPT"
 sleep $s
