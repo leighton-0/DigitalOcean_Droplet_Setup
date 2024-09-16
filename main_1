@@ -281,7 +281,7 @@ apt purge do-agent -y
 # Install the current metrics agent
 curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh
 # run the installation using Bash:
-y | bash /tmp/install.sh
+bash /tmp/install.sh
 }
 
 setup_synlincs() {
