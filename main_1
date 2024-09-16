@@ -33,8 +33,8 @@ s=4                          # Slows scritpt down so you can see whats going on
 
 # verify running as root
 if [[ "${EUID}" -ne 0 ]]; then
-  echo -e ' '${RED}'[!]'${RESET}" This script must be ${RED}run as root${RESET}" 1>&2
-  echo -e ' '${RED}'[!]'${RESET}" Quitting..." 1>&2
+  echo -e ' '${RED}'[!]'${RESET}" This script must be ${RED}run as root${RESET}" # 1>&2
+  echo -e ' '${RED}'[!]'${RESET}" Quitting..." # 1>&2
   exit 1
 fi
 
