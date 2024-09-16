@@ -366,26 +366,24 @@ main() {
     compute_start_time
     system_update
     test_fun
-if [[ 1 -eq 0 ]; then
-    install_misc
-    install_tmux
-    install_digall
-    add_to_bashrc
-    install_nano
-    install_python
-    install_docker
-    install_golang
-    install_PD_subfinder
-    install_hakoriginfiinder
-    install_WPScan
-    install_proxychains
-    install_nse_scripts
-    install_DO_Metrics_Agent
-    setup_synlincs
-    clone_repos
-    setup_stow
-    gen_SSH_key
-fi
+#    install_misc
+#    install_tmux
+#    install_digall
+#    add_to_bashrc
+#    install_nano
+#    install_python
+#    install_docker
+#   install_golang
+#    install_PD_subfinder
+#    install_hakoriginfiinder
+#    install_WPScan
+#   install_proxychains
+#   install_nse_scripts
+ #   install_DO_Metrics_Agent
+#  setup_synlincs
+ #   clone_repos
+  #  setup_stow
+  # gen_SSH_key
 }
 
 echo " \n\n ✅ THE END OF THE SCRIPT"
