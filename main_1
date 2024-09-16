@@ -57,12 +57,17 @@ compute_start_time() {
     echo "\n\n Install started - $start_time \n" > script.log
 }
 
+apt_package_install() {
+    echo "\n [+] installing $1 via apt\n" >> script.log
+    apt install -y -q $1 >> script.log 2>>script_error.log
+}
+
 system_update() {
 printf '\n============================================================\n'
 printf '   ⏳ Updating System\n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
-apt update && apt upgrade -y && apt autoremove -y >> script.log 2>>script_error.log    # what is -qq doing?
+apt update && apt upgrade -y && apt autoremove -y -qq >> script.log 2>>script_error.log    # what is -qq doing?
 }
 install_misc() {
 printf '\n============================================================\n'
@@ -370,6 +375,7 @@ compute_finish_time(){
 }
 main() {
     compute_start_time
+   apt_package_install
     system_update
     test_fun
 #    install_misc
