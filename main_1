@@ -256,7 +256,7 @@ chmod +x proxychains_config.sh
 ./proxychains_config.sh
 }
 
-install_nse_scripts() {
+install_nse_scripts() {}
 printf '\n============================================================\n'
 printf '  ⏳  cp nse scripts & themes & plugin from https://github.com/hackertarget/nmap-nse-scripts \n' | tee -a script.log
 printf '============================================================\n\n'
