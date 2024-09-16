@@ -286,9 +286,10 @@ bash /tmp/install.sh
 }
 
 setup_synlincs() {
-ln -s ~/mycode/repos/.dotfiles/.bash_functions .bash_functions
-ln -s ~/mycode/repos/.dotfiles/.bash_aliases .bash_aliases
-ln -s ~/mycode/repos/My_Randon_Scripts/repo_sync.sh repo_sync.sh
+ln -s ~/mycode/repos/.dotfiles/bash_functions .bash_functions
+ln -s ~/mycode/repos/.dotfiles/bash_aliases .bash_aliases
+ln -s ~/mycode/repos/.dotfiles/tmux/.tmux.conf
+ln -sf ~/mycode/.env ~/.env
 }
 
 clone_repos() {
@@ -365,9 +366,9 @@ main() {
    install_proxychains     # need attantion do not use
    install_nse_scripts
  #   install_DO_Metrics_Agent  # could be a problem with this
-#  setup_synlincs          # not used - redundent
+#  setup_synlincs          
     clone_repos
-   setup_stow
+   setup_stow    # not used - not working
 #  install_digall # need to make sure its put in /mycode
 
  compute_finish_time
