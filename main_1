@@ -125,7 +125,7 @@ sleep $s
 
 if [ ! -f ~/.bashrc.bak ]; then                                                      # Check if bashrc.bak has already been copied. If yes then skip
     cp ~/.bashrc ~/.bashrc.bak                                             # bak Up bashrc incase I fuck it up
-fi
+
 cat <<"EOF" >>.bashrc                    #Add pointer to new .bash_aliases
 printf '\n\n'
 printf '================Added by me ==================================\n\n'
@@ -145,8 +145,9 @@ fi
 PS1="SHELL:${SHLVL} \W\$ "
 export PS1
 EOF
+fi
+. .bashrc && . .bash_aliases
 }
-# . .bashrc && . .bash_aliases                                                     #source .bashrc & .bash_aliases
 
 install_nano() {
 printf '\n============================================================\n'
@@ -377,9 +378,8 @@ main() {
     system_update
 #   install_misc
 #   install_tmux
-    install_digall
     add_to_bashrc
-#    install_nano
+    install_nano
 #    install_python
 #    install_docker
 #   install_golang
@@ -392,6 +392,7 @@ main() {
 #  setup_synlincs
  #   clone_repos
   #  setup_stow
+#  install_digall # need to make sure its put in /mycode
   # gen_SSH_key
  compute_finish_time
 }
