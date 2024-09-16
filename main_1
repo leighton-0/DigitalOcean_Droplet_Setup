@@ -378,7 +378,7 @@ main() {
     system_update
 #   install_misc
 #   install_tmux
-    add_to_bashrc
+ #   add_to_bashrc
 #    install_nano
 #    install_python
 #   install_docker
