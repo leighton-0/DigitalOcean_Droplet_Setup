@@ -12,13 +12,13 @@
 #   need to first install curl ==> apt install curl
 #   then:-
 #   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash
-
-# curl -L --silent https://bit.ly/xxxxx<user> | bash          # not sure what this is doing
+#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash -s -- arg1 arg2 etc
+#       -s --> True if file exists and has a size greater than zero.
 
 # Used for debugging
 # set -x
 # PS4='$(tput setaf 9)$(printf "%-12s\\t%.3fs\\t@line\\t%-10s" $(date +%T) $(echo $(date "+%s.%3N")-'$(date "+%s.%3N")' | bc ) $LINENO)$(tput sgr 0)'
-
+#   ref: https://spencersmolen.com/debugging-bash/
 # set colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -33,8 +33,8 @@ s=4                          # Slows scritpt down so you can see whats going on
 
 # verify running as root
 if [[ "${EUID}" -ne 0 ]]; then
-  echo -e ' '${RED}'[!]'${RESET}" This script must be ${RED}run as root${RESET}" # 1>&2
-  echo -e ' '${RED}'[!]'${RESET}" Quitting..." # 1>&2
+  echo -e ' '${RED}'[!]'${RESET}" This script must be ${RED}run as root${RESET}" 1>&2
+  echo -e ' '${RED}'[!]'${RESET}" Quitting..." 1>&2
   exit 1
 fi
 
@@ -47,6 +47,11 @@ else
 fi
 
 sleep $s
+
+test_fun() {
+echo "test working Ok"
+}
+
 compute_start_time() {
     start_time=$(date +%s)
     echo "\n\n Install started - $start_time \n" >> script.log
