@@ -102,15 +102,6 @@ wget https://raw.githubusercontent.com/FreedomBen/digall/main/digall && chmod +x
 # Use :- ./digall example.com
 }
 
-if [[ 1 -eq 2 ]]; then    # Block comment start
-printf '\n============================================================\n'
-printf '     Upload standard .bash_aliases & upgrades to .bashrc. \n'
-printf '============================================================\n\n'
-sleep $s
-wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_aliases      # Upload my standard aliases file
-wget https://raw.githubusercontent.com/leighton-0/.dotfiles/main/.bash_functions
-fi                        # Block comment end
-
 add_to_bashrc() {
 printf '\n============================================================\n'
 printf '[+]  ⏳ Make additions to .bashrc. \n' | tee -a script.log
