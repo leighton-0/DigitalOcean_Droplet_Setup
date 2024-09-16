@@ -39,7 +39,7 @@ if [[ "${EUID}" -ne 0 ]]; then
 fi
 
 # ensure clean logs
-rm script*
+# rm script*
 
 echo -e "  🚀 ${RED}Starting Droplet setup script${RESET}"
 
