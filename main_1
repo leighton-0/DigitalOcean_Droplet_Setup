@@ -380,9 +380,9 @@ main() {
 #   install_tmux
     add_to_bashrc
 #    install_nano
-    install_python
-#    install_docker
-#   install_golang
+#    install_python
+    install_docker
+    install_golang
 #    install_PD_subfinder
 #    install_hakoriginfiinder
 #    install_WPScan
