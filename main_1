@@ -79,6 +79,7 @@ apt install dnsutils -y >> script.log 2>>script_error.log              # dig & n
 apt install tree -y >> script.log 2>>script_error.log
 apt install figlet toilet -y >> script.log 2>>script_error.log           # install figlet for banners
 apt install neofetch -y >> script.log 2>>script_error.log
+apt install stow -y >> script.log 2>>script_error.log
 }
 
 install_tmux() {
@@ -296,16 +297,16 @@ printf ' ⏳  clone github repos to theit respective directories \n' | tee -a sc
 printf '============================================================\n\n'
 sleep $s
 mkdir -p ~/mycode/repos
-cd ~/mycode/repos
+cd !$
 git clone https://github.com/leighton-0/My_Random_Scripts
 git clone https://github.com/leighton-0/cheat_sheets
 git clone https://github.com/leighton-0/.dotfiles
-#cd ~/mycode/repos/.dotfile
-git re­mote set-url ori­gin git@github.com:leighton-0/.dot­files.git
+cd ~/mycode/repos/.dotfiles
+git remote set-url origin git@github.com:leighton-0/.dotfiles.git
 cd ~/mycode/repos/My_Random_Scripts
-git re­mote set-url ori­gin git@github.com:leighton-0/My_Random_Scripts
+git remote set-url origin git@github.com:leighton-0/My_Random_Scripts
 cd ~/mycode/repos/cheat_sheets
-git re­mote set-url ori­gin git@github.com:leighton-0/cheat_sheets
+git remote set-url origin git@github.com:leighton-0/cheat_sheets
 # Note  Need ot set up ssh keys for github ********************************
 cd ~
 # wget
@@ -325,7 +326,7 @@ sleep $s
 
 echo "Stowing Dotfiles...";
 sleep $s
-cd ~/.dotfiles
+cd ~/mycode/repos/.dotfiles
 for file in ~/dotfiles/*; do
   # Only run Stow on the directories in the dotfiles folder and not the individual files.
   # Using 'basename' strips the filepath from the directory name. 
