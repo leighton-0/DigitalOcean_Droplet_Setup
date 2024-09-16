@@ -54,7 +54,7 @@ echo "test function working Ok"
 
 compute_start_time() {
     start_time=$(date +%s)
-    echo "\n\n Install started - $start_time \n" >> script.log
+    echo "\n\n Install started - $start_time \n" > script.log
 }
 
 system_update() {
