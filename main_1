@@ -43,13 +43,13 @@ if [ $# -eq 0 ]
   then
     echo "${RED}No arguments supplied${RESET}"1>&2
 else
-  echo -e "  🚀 ${BOLD}${RED}Starting Droplet setup script${RESET}"
+  echo -e "  🚀 ${RED}Starting Droplet setup script${RESET}"
 fi
 
 sleep $s
 
 test_fun() {
-echo "test working Ok"
+echo "test function working Ok"
 }
 
 compute_start_time() {
