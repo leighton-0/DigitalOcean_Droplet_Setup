@@ -339,7 +339,7 @@ ln -sf ~/mycode/.env ~/.env    # manually synlinc to .env decrypted file
 cd ~/
 echo "All stowed"
 sleep $s
-printf '\n\n'
+# printf '\n\n'
 }
 
 compute_finish_time() {
