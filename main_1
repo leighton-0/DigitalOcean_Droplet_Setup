@@ -383,11 +383,11 @@ main() {
 #    install_python
 #   install_docker
 #    install_golang
-    install_PD_subfinder
-    install_hakoriginfiinder
-    install_WPScan
-#   install_proxychains
-#   install_nse_scripts
+ #   install_PD_subfinder
+ #   install_hakoriginfiinder
+ #   install_WPScan
+   install_proxychains
+   install_nse_scripts
  #   install_DO_Metrics_Agent
 #  setup_synlincs
  #   clone_repos
