@@ -41,13 +41,7 @@ fi
 # ensure clean logs
 rm script*
 
-# verify argument
-if [ $# -eq 0 ]
-  then
-    echo "${RED}No arguments supplied${RESET}"1>&2
-else
-  echo -e "  🚀 ${RED}Starting Droplet setup script${RESET}"
-fi
+echo -e "  🚀 ${RED}Starting Droplet setup script${RESET}"
 
 sleep $s
 
