@@ -16,8 +16,8 @@
 #       -s --> True if file exists and has a size greater than zero.
 
 # Used for debugging
- set -x
- PS4='$(tput setaf 9)$(printf "%-12s\\t%.3fs\\t@line\\t%-10s" $(date +%T) $(echo $(date "+%s.%3N")-'$(date "+%s.%3N")' | bc ) $LINENO)$(tput sgr 0)'
+set -x
+PS4='$(tput setaf 9)$(printf "%-12s\\t%.3fs\\t@line\\t%-10s" $(date +%T) $(echo $(date "+%s.%3N")-'$(date "+%s.%3N")' | bc ) $LINENO)$(tput sgr 0)'
 #   ref: https://spencersmolen.com/debugging-bash/
 # set colors
 RED='\033[0;31m'
@@ -365,7 +365,7 @@ printf ' ssk key generated - copy to github
 
 compute_finish_time(){
     finish_time=$(date +%s)
-    echo -e "  ⌛ Time (roughly) taken: ${YELLOW}$(( $(( finish_time - start_time )) / 60 )) minutes${RESET}"
+    echo -e "  ⌛ Time (roughly) taken: ${YELLOW}$(( $(( finish_time - start_time ))  )) minutes${RESET}"
     echo "\n\n Install completed - $finish_time \n" >> script.log
 }
 main() {
