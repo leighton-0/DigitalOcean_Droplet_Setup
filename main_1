@@ -361,7 +361,7 @@ ssh-keygen -t rsa -b 4096 -C "leighton@clucas.xxx"
 printf ' ssk key generated - copy to github
 }
 
-compute_finish_time(){
+compute_finish_time() {
     finish_time=$(date +%s)
     echo -e "  ⌛ Time (roughly) taken: ${YELLOW}$(( $(( finish_time - start_time ))  )) seconds${RESET}"
     echo "\n\n Install completed - $finish_time \n" >> script.log
@@ -384,10 +384,10 @@ main() {
    install_nse_scripts
  #   install_DO_Metrics_Agent
 #  setup_synlincs          # not used - redundent
- #   clone_repos
- #  setup_stow
+    clone_repos
+   setup_stow
 #  install_digall # need to make sure its put in /mycode
-  # gen_SSH_key
+  gen_SSH_key
  compute_finish_time
 }
 
