@@ -43,7 +43,7 @@ if [ $# -eq 0 ]
   then
     echo "${RED}No arguments supplied${RESET}"1>&2
 else
-  echo -e "  🚀 ${BOLD}{RED}Starting Droplet setup script${RESET}"
+  echo -e "  🚀 ${BOLD}${RED}Starting Droplet setup script${RESET}"
 fi
 
 sleep $s
@@ -385,7 +385,7 @@ main() {
     gen_SSH_key
 }
 
-echo " ✅ THE END OF THE SCRIPT"
+echo " \n\n ✅ THE END OF THE SCRIPT"
 sleep $s
 sleep $s
 
