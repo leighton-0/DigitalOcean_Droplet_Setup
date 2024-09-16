@@ -323,7 +323,7 @@ sleep $s
 # This script will Stow all the dotfiles located in the ~/dotfiles folder.
 # The -R flag is used to force a 'restow' which will remove any existing symlinks before attempting to Stow.
 
-echo "Stowing Dotfiles...";
+echo "Stowing Dotfiles..."
 sleep $s
 cd ~/.dotfiles
 for file in ~/dotfiles/*; do
@@ -331,7 +331,7 @@ for file in ~/dotfiles/*; do
   # Using 'basename' strips the filepath from the directory name. 
   if [ -d ${file} ]; then
     stow -R $(basename $file)
-    echo "$(basename $file) stowed."; 
+    echo "$(basename $file) stowed." 
   fi
 ln -sf ~/mycode/.env ~/.env    # manually synlinc to .env decrypted file
 
