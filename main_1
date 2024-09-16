@@ -375,10 +375,10 @@ compute_finish_time(){
 }
 main() {
     compute_start_time
-   apt_package_install
+    apt_package_install
     system_update
     test_fun
-#    install_misc
+    install_misc
 #    install_tmux
 #    install_digall
 #    add_to_bashrc
