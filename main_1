@@ -365,6 +365,8 @@ printf ' ssk key generated - copy to github
 main() {
     compute_start_time
     system_update
+    test_fun
+if [[ 1 == 0 ]; then
     install_misc
     install_tmux
     install_digall
@@ -383,6 +385,7 @@ main() {
     clone_repos
     setup_stow
     gen_SSH_key
+fi
 }
 
 echo " \n\n ✅ THE END OF THE SCRIPT"
