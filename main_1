@@ -376,9 +376,9 @@ main() {
     apt_package_install
     system_update
 #   install_misc
-    install_tmux
-#    install_digall
-#    add_to_bashrc
+#   install_tmux
+    install_digall
+    add_to_bashrc
 #    install_nano
 #    install_python
 #    install_docker
