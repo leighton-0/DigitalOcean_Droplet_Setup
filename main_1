@@ -255,7 +255,7 @@ printf '  ⏳  cp nse scripts & themes & plugin from https://github.com/hackerta
 printf '============================================================\n\n'
 sleep $s
 mkdir ~/nmap-nse-scripts
-cd nmap-nse-scripts/
+cd ~/nmap-nse-scripts/
 wget https://raw.githubusercontent.com/hackertarget/nmap-nse-scripts/master/hostmap-hackertarget.nse
 wget https://raw.githubusercontent.com/hackertarget/nmap-nse-scripts/master/http-wordpress-info.nse
 wget https://raw.githubusercontent.com/hackertarget/nmap-nse-scripts/master/http-wordpress-plugins.nse
@@ -337,7 +337,6 @@ ln -sf ~/mycode/.env ~/.env    # manually synlinc to .env decrypted file
 
 # Return back to the your PWD from before you ran the script
 cd ~/
-
 echo "All stowed"
 sleep $s
 printf '\n\n'
