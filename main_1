@@ -378,7 +378,7 @@ main() {
  #   install_PD_subfinder
  #   install_hakoriginfiinder
  #   install_WPScan
- #  install_proxychains     # need attantion do not use
+   install_proxychains     # need attantion do not use
    install_nse_scripts
  #   install_DO_Metrics_Agent  # could be a problem with this
 #  setup_synlincs          # not used - redundent
