@@ -386,12 +386,12 @@ main() {
  #   install_PD_subfinder
  #   install_hakoriginfiinder
  #   install_WPScan
-   install_proxychains
+ #  install_proxychains
    install_nse_scripts
  #   install_DO_Metrics_Agent
 #  setup_synlincs
- #   clone_repos
-  #  setup_stow
+    clone_repos
+   setup_stow
 #  install_digall # need to make sure its put in /mycode
   # gen_SSH_key
  compute_finish_time
