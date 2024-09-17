@@ -288,7 +288,8 @@ bash /tmp/install.sh
 setup_synlincs() {
 ln -s ~/mycode/repos/.dotfiles/bash_functions .bash_functions
 ln -s ~/mycode/repos/.dotfiles/bash_aliases .bash_aliases
-ln -s ~/mycode/repos/.dotfiles/tmux/.tmux.conf
+ln -sf /root/mycode/repos/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+
 ln -sf ~/mycode/.env ~/.env
 }
 
