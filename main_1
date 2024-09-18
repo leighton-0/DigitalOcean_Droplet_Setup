@@ -9,6 +9,8 @@
 # To loginto a droplet from WSL ==> ssh root@<IP>
 
 # ssh-keygen -t rsa -b 4096 -C "leighton@clucas.xxx"
+# pub key in /.ssh
+# copy to github
 
 # to install:-
 #   need to first install curl ==> apt install curl
