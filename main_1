@@ -304,12 +304,15 @@ cd !$
 git clone https://github.com/leighton-0/My_Random_Scripts
 git clone https://github.com/leighton-0/cheat_sheets
 git clone https://github.com/leighton-0/.dotfiles
+git clone https://github.com/leighton-0/DigitalOcean_Droplet_Setup
 cd ~/mycode/repos/.dotfiles
 git remote set-url origin git@github.com:leighton-0/.dotfiles.git
 cd ~/mycode/repos/My_Random_Scripts
 git remote set-url origin git@github.com:leighton-0/My_Random_Scripts
 cd ~/mycode/repos/cheat_sheets
 git remote set-url origin git@github.com:leighton-0/cheat_sheets
+cd ~/mycode/repos/DigitalOcean_Droplet_Setup
+git remote set-url origin git@github.com:leighton-0/DigitalOcean_Droplet_Setup
 # Note  Need ot set up ssh keys for github ********************************
 cd ~
 # decrypt .env & move to ~/mycode.env
