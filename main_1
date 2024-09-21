@@ -342,10 +342,10 @@ sleep $s
 cd ~/mycode/repos/.dotfiles
 for file in ~/dotfiles/*; do
   # Only run Stow on the directories in the dotfiles folder and not the individual files.
-  # Using 'basename' strips the filepath from the directory name. 
+  # Using 'basename' strips the filepath from the directory name.
   if [ -d ${file} ]; then
     stow -R $(basename $file)
-    echo "$(basename $file) stowed."; 
+    echo "$(basename $file) stowed.";
   fi
 ln -sf ~/mycode/.env ~/.env    # manually synlinc to .env decrypted file
 
@@ -378,21 +378,21 @@ main() {
     system_update
 #   install_misc
 #   install_tmux
- #   add_to_bashrc
-#    install_nano
-#    install_python
+#   add_to_bashrc
+#   install_nano
+#   install_python
 #   install_docker
-#    install_golang
- #   install_PD_subfinder
- #   install_hakoriginfiinder
- #   install_WPScan
-   install_proxychains     # need attantion do not use
-   install_nse_scripts
- #   install_DO_Metrics_Agent  # could be a problem with this
-#  setup_synlincs          
-    clone_repos
-   setup_stow    # not used - not working
-#  install_digall # need to make sure its put in /mycode
+#   install_golang
+#   install_PD_subfinder
+#   install_hakoriginfiinder
+   install_WPScan
+#   install_proxychains     # need attantion do not use
+#   install_nse_scripts
+#   install_DO_Metrics_Agent  # could be a problem with this
+#   setup_synlincs
+#   clone_repos
+#   setup_stow    # not used - not working
+#   install_digall # need to make sure its put in /mycode
 
  compute_finish_time
 }
