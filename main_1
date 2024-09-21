@@ -353,6 +353,17 @@ sleep $s
 # printf '\n\n'
 }
 
+printf '\n============================================================\n'
+printf '[+] install NordVPN\n'
+printf '============================================================\n\n'
+if [ ! -f '~/nordvpn*']
+then
+wget https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb
+apt install -y ./nordvpn-release_1.0.0_all.deb
+fi
+apt update
+apt install nordvpn
+
 compute_finish_time() {
     finish_time=$(date +%s)
     echo -e "  ⌛ Time (roughly) taken: ${YELLOW}$(( $(( finish_time - start_time ))  )) seconds${RESET}"
