@@ -313,6 +313,8 @@ cd ~/mycode/repos/cheat_sheets
 git remote set-url origin git@github.com:leighton-0/cheat_sheets
 cd ~/mycode/repos/DigitalOcean_Droplet_Setup
 git remote set-url origin git@github.com:leighton-0/DigitalOcean_Droplet_Setup
+git config --global user.name "Leighton"
+git config --global user.email leighton@clucas.au
 # Note  Need ot set up ssh keys for github ********************************
 cd ~
 # decrypt .env & move to ~/mycode.env
@@ -329,7 +331,7 @@ openssl enc -aes-256-cbc -d -in ~/mycode/repos/My_Random_Scripts/.env.enc -out ~
 printf "${RED}this should be in red to prove .env is working${NORMAL}\n"
 }
 
-setup_stow() {
+setup_stow() {  # this is not used opted for manual synlincs
 printf '\n============================================================\n'
 printf ' ⏳  Install linkes to dotfiles using STOW \n' | tee -a script.log
 printf '============================================================\n\n'
