@@ -23,15 +23,15 @@
 #set -x
 #xPS4='$(tput setaf 9)$(printf "%-12s\\t%.3fs\\t@line\\t%-10s" $(date +%T) $(echo $(date "+%s.%3N")-'$(date "+%s.%3N")' | bc ) $LINENO)$(tput sgr 0)'
 #   ref: https://spencersmolen.com/debugging-bash/
-# set colors   THESE ARE NOW SET IN ENV FILE -->> THIS CAN B DELETED
-#RED='\033[0;31m'
-#GREEN='\033[0;32m'
-#YELLOW='\033[0;33m'
-#BLUE="\033[01;34m" # Heading
-#NO_COLOR='\033[0m'
-#CLEAR_LINE='\r\033[K'
-#BOLD="\033[01;01m" # Highlight
-#RESET="\033[00m" # Normal
+# set colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE="\033[01;34m" # Heading
+NO_COLOR='\033[0m'
+CLEAR_LINE='\r\033[K'
+BOLD="\033[01;01m" # Highlight
+RESET="\033[00m" # Normal
 SECONDS=0
 s=4                          # Slows scritpt down so you can see whats going on
 
@@ -344,7 +344,7 @@ main() {
 #    system_update
 #    install_misc
 #    install_tmux
-#   add_to_bashrc
+   add_to_bashrc
 #    install_nano
 #    install_python
 #    install_docker
@@ -354,9 +354,9 @@ main() {
 #    install_WPScan
 #   install_proxychains     # need attantion do not use
 #    install_nse_scripts
-    install_DO_Metrics_Agent  # could be a problem with this
-    setup_synlincs
-    clone_repos
+#    install_DO_Metrics_Agent  # could be a problem with this
+#    setup_synlincs
+#    clone_repos
 #   setup_stow    # not used - not working
 #   install_digall # need to make sure its put in /mycode
 
@@ -370,3 +370,6 @@ sleep ${s}
 
 ELAPSED="Elapsed: $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
     printf "\n${CYAN}Finished - Runtime = ${ELAPSED}${NORMAL}\n"
+
+# What to do now
+# run ~/mycode/repo/My_Random_scripts/decrypt,sh, entering the password
