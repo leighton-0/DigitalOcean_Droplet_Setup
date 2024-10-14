@@ -355,7 +355,7 @@ main() {
 #   install_proxychains     # need attantion do not use
 #    install_nse_scripts
 #    install_DO_Metrics_Agent  # could be a problem with this
-#    setup_synlincs
+   setup_synlincs
 #    clone_repos
 #   setup_stow    # not used - not working
 #   install_digall # need to make sure its put in /mycode
