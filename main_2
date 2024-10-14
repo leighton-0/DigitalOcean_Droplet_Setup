@@ -81,7 +81,9 @@ apt install dnsutils -y >> script.log 2>>script_error.log              # dig & n
 apt install tree -y >> script.log 2>>script_error.log
 apt install figlet toilet -y >> script.log 2>>script_error.log           # install figlet for banners
 apt install neofetch -y >> script.log 2>>script_error.log
-#apt install stow -y >> script.log 2>>script_error.log   ---> NOT USED ANY MORE CAN DE DELETED
+apt install btop -y >> script.log 2>>script_error.log
+apt install fzf -y >> script.log 2>>script_error.log
+apt install tldr -y >> script.log 2>>script_error.log
 }
 
 install_tmux() {
@@ -288,8 +290,8 @@ bash /tmp/install.sh
 }
 
 setup_synlincs() {
-ln -s ~/mycode/repos/.dotfiles/bash_functions .bash_functions
-ln -s ~/mycode/repos/.dotfiles/bash_aliases .bash_aliases
+ln -sf ~/mycode/repos/.dotfiles/bash_functions .bash_functions
+ln -sf ~/mycode/repos/.dotfiles/bash_aliases .bash_aliases
 ln -sf /root/mycode/repos/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
 ln -sf ~/mycode/.env ~/.env
 }
@@ -339,19 +341,19 @@ compute_finish_time() {
 main() {
     compute_start_time
 #    apt_package_install    THIS CAN BE DELETED I THINK --> NOT SURE WHY ITS HERE
-    system_update
-    install_misc
-    install_tmux
+#    system_update
+#    install_misc
+#    install_tmux
 #   add_to_bashrc
-    install_nano
-    install_python
-    install_docker
-    install_golang
+#    install_nano
+#    install_python
+#    install_docker
+#    install_golang
 #   install_PD_subfinder
 #   install_hakoriginfiinder
-    install_WPScan
+#    install_WPScan
 #   install_proxychains     # need attantion do not use
-    install_nse_scripts
+#    install_nse_scripts
     install_DO_Metrics_Agent  # could be a problem with this
     setup_synlincs
     clone_repos
