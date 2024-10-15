@@ -319,6 +319,7 @@ git config --global user.name "Leighton"
 git config --global user.email leighton@clucas.au
 # Note  Need ot set up ssh keys for github ********************************
 cd ~
+mkdir zresults ztargets
 # decrypt .env & move to ~/mycode.env
 # ref https://www.linkedin.com/pulse/day-2-learn-bash-write-script-encrypt-filefolder-hasan-mahmud-
 echo "enter the password"
