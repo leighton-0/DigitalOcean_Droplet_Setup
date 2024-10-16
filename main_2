@@ -342,22 +342,22 @@ compute_finish_time() {
 main() {
     compute_start_time
 #    apt_package_install    THIS CAN BE DELETED I THINK --> NOT SURE WHY ITS HERE
-#    system_update
-#    install_misc
-#    install_tmux
-   add_to_bashrc
-#    install_nano
-#    install_python
-#    install_docker
-#    install_golang
+    system_update
+    install_misc
+    install_tmux
+    add_to_bashrc
+    install_nano
+    install_python
+    install_docker
+    install_golang
 #   install_PD_subfinder
 #   install_hakoriginfiinder
-#    install_WPScan
+    install_WPScan
 #   install_proxychains     # need attantion do not use
-#    install_nse_scripts
+    install_nse_scripts
 #    install_DO_Metrics_Agent  # could be a problem with this
-   setup_synlincs
-#    clone_repos
+    setup_synlincs
+    clone_repos
 #   setup_stow    # not used - not working
 #   install_digall # need to make sure its put in /mycode
 
