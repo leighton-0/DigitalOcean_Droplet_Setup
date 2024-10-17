@@ -22,7 +22,7 @@
 # Revison Log
 # Main-3
 #  added function to update_sources so as installed bookworm
-
+#  updated .nanorc to include some defaults
 
 # Used for debugging
 #set -x
@@ -175,6 +175,22 @@ make
 make install
 # set up colour text ref:- https://askubuntu.com/questions/90013/how-do-i-enable-syntax-highlighting-in-nano
 find /usr/share/nano/ -iname "*.nanorc" -exec echo include {} \; >> ~/.nanorc
+cat > "~/.nanorc" <<EOF
+## Some defaults
+set autoindent
+set historylog
+set indicator
+set linenumbers
+set locking
+set mouse
+set softwrap
+set stateflags
+set tabsize 4
+set tabstospaces
+## Enable syntax highlighting in Nano
+include ~/.nano/syntax/*.nanorc
+EOF
+
 }
 
 install_python() {
