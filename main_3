@@ -384,11 +384,11 @@ main() {
     add_to_bashrc
     install_nano
     install_python
-    install_docker
+#    install_docker
     install_golang
 #   install_PD_subfinder
 #   install_hakoriginfiinder
-    install_WPScan
+#    install_WPScan
 #   install_proxychains     # need attantion do not use
     install_nse_scripts
 #    install_DO_Metrics_Agent  # could be a problem with this
@@ -400,8 +400,8 @@ main() {
  compute_finish_time
 }
 
-# main
-install_nano
+ main
+# install_nano
 
 echo "  ✅ THE END OF THE SCRIPT"
 sleep ${s}
