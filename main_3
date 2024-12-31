@@ -15,8 +15,8 @@
 # to install:-
 #   need to first install curl ==> apt install curl
 #   then:-
-#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash
-#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_1 | bash -s -- arg1 arg2 etc
+#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_3 | bash
+#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_3 | bash -s -- arg1 arg2 etc
 #       -s --> True if file exists and has a size greater than zero.
 
 # Revison Log
