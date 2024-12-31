@@ -15,11 +15,13 @@
 # to install:-
 #   need to first install curl ==> apt install curl
 #   then:-
-#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_3 | bash
-#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_3 | bash -s -- arg1 arg2 etc
+#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_4 | bash
+#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_4 | bash -s -- arg1 arg2 etc
 #       -s --> True if file exists and has a size greater than zero.
 
 # Revison Log
+# Main-4
+#  added LSDeluxe
 # Main-3
 #  added function to update_sources so as installed bookworm
 #  updated .nanorc to include some defaults
@@ -279,6 +281,15 @@ sleep $s
 apt install build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev  libgmp-dev zlib1g-dev -y
 gem install wpscan                                  #install wpscan
 }
+
+install_lsd() {
+printf '\n============================================================\n'
+printf ' ⏳  Install LSDelux Ref:- https://github.com/lsd-rs/lsd \n' | tee -a script.log
+printf '============================================================\n\n'
+sleep $s
+apt install lsd
+}
+
 
 install_proxychains() {
 printf '\n============================================================\n'
