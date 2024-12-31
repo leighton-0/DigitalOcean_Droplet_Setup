@@ -403,6 +403,7 @@ main() {
 #    install_WPScan
 #   install_proxychains     # need attantion do not use
     install_nse_scripts
+    install_lsd            # ls delux
 #    install_DO_Metrics_Agent  # could be a problem with this
     setup_synlincs
     clone_repos
