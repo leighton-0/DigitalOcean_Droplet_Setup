@@ -4,7 +4,7 @@
 
 
 #######################################################################
-##             DigitalOcean Droplet - Basic Set Up Script           ##
+##             Debian - Basic Set Up Script           ##
 #######################################################################
 # To loginto a droplet from WSL ==> ssh root@<IP>
 
@@ -15,8 +15,8 @@
 # to install:-
 #   need to first install curl ==> apt install curl
 #   then:-
-#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_3 | bash
-#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_3 | bash -s -- arg1 arg2 etc
+#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_4 | bash
+#   curl -k -s https://raw.githubusercontent.com/leighton-0/DigitalOcean_Droplet_Setup/main/main_4 | bash -s -- arg1 arg2 etc
 #       -s --> True if file exists and has a size greater than zero.
 
 # Revison Log
@@ -286,6 +286,15 @@ gem install wpscan                                  #install wpscan
 install_lsd() {
 printf '\n============================================================\n'
 printf ' ⏳  Install LSDelux Ref:- https://github.com/lsd-rs/lsd \n' | tee -a script.log
+printf '============================================================\n\n'
+sleep $s
+apt install lsd
+}
+
+
+install_fabric() {
+printf '\n============================================================\n'
+printf ' ⏳  Install Fabric Ref:- https://github.com/danielmiessler/fabric \n' | tee -a script.log
 printf '============================================================\n\n'
 sleep $s
 apt install lsd
