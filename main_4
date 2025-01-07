@@ -419,6 +419,30 @@ main() {
 #   setup_stow    # not used - not working
 #   install_digall # need to make sure its put in /mycode
 
+wsl() {
+    compute_start_time
+    update_sources	# foud that the "profitserver" vps was not running bookworm --> this upgrade sources file    
+    system_update
+    install_misc
+    install_tmux
+    add_to_bashrc
+    install_nano
+    install_python
+#    install_docker
+    install_golang
+#   install_PD_subfinder
+#   install_hakoriginfiinder
+#    install_WPScan
+#   install_proxychains     # need attantion do not use
+    install_nse_scripts
+    install_lsd            # ls delux
+#    install_DO_Metrics_Agent  # could be a problem with this
+    setup_synlincs
+    clone_repos
+#   setup_stow    # not used - not working
+#   install_digall # need to make sure its put in /mycode
+
+
  compute_finish_time
 }
 
