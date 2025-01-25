@@ -360,7 +360,7 @@ printf '============================================================\n\n'
 sleep $s
 mkdir -p ~/mycode/repos
 cd ~/mycode/repos
-git clone https://github.com/leighton-0/My_Random_Scripts
+git clone https://github.com/leighton-0/my_random_scripts
 git clone https://github.com/leighton-0/cheat_sheets
 git clone https://github.com/leighton-0/.dotfiles
 git clone https://github.com/leighton-0/DigitalOcean_Droplet_Setup
